@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router'
 import './App.css'
 import Nav from './components/Nav'
 import Profile from './components/Profile'
+import SignIn from './components/SignIn'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -15,6 +16,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/signin" element={<SignIn setUser={setUser} />} />
         </Routes>
       </main>
     </div>
