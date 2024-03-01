@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react"
-import { Route, Routes } from "react-router"
+import { useState, useEffect } from 'react'
+import { Route, Routes } from 'react-router'
 
-import "./App.css"
-import Nav from "./components/Nav"
-import  Profile from './components/Profile'
+import './App.css'
+import Nav from './components/Nav'
+import Profile from './components/Profile'
 
 function App() {
-  const [user, setUser] = useState("null")
-
-
-
+  const [user, setUser] = useState(null)
 
   return (
     <div>
@@ -17,10 +14,8 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/profile" element= {<Profile/>}/>
-          
-          
-          </Routes>
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
       </main>
     </div>
   )
