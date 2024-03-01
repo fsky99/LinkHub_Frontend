@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router"
-
+import Post from './components/Post'
 import "./App.css"
 import Nav from "./components/Nav"
 import  Profile from './components/Profile'
@@ -21,6 +21,7 @@ function App() {
           
           
           </Routes>
+          <Post />
       </main>
     </div>
   )
