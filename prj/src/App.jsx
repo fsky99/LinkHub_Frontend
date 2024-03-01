@@ -15,7 +15,7 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile user={user} />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
         </Routes>
       </main>
