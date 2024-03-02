@@ -7,7 +7,7 @@ const Profile = ({ user }) => {
   return user ? (
     <div className="profile">
       <nav id="sidebar">
-        <div class="sidebar-header">
+        <div className="sidebar-header">
           <a href="#">Edit Profile</a>
         </div>
       </nav>

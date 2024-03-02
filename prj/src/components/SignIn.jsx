@@ -14,9 +14,10 @@ const SignIn = ({ setUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
+    console.log('payload: ', payload)
     setFormValues({ email: '', password: '' })
     setUser(payload)
-    navigate('/profile') //change it to home
+    navigate('/') //change it to home
   }
 
   return (

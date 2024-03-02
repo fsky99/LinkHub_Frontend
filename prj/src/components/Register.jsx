@@ -17,6 +17,7 @@ const Register = () => {
   }
 
   const handleSubmit = async (e) => {
+    console.log('hi')
     e.preventDefault()
     await RegisterUser({
       name: formValues.name,
