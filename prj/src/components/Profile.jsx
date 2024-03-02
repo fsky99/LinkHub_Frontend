@@ -5,7 +5,7 @@ const Profile = () => {
   return (
     <div className="profile">
       <nav id="sidebar">
-        <div class="sidebar-header">
+        <div className="sidebar-header">
          <a href="#">Edit Profile</a> 
         </div>
       </nav>
