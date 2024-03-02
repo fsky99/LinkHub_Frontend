@@ -8,7 +8,7 @@ const Profile = ({ user }) => {
     <div className="profile">
       <nav id="sidebar">
         <div className="sidebar-header">
-          <a href="#">Edit Profile</a>
+         <a href="#">Edit Profile</a> 
         </div>
       </nav>
     </div>
