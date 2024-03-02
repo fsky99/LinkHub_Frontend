@@ -1,62 +1,73 @@
-import "../App.css";
-import { useRef, useState } from "react";
-import axios from "axios";
+import "../App.css"
+import { useRef, useState } from "react"
+import axios from "axios"
 
 const Post = () => {
-  const imageRef = useRef(null);
-  const textRef = useRef(null);
-  const hashtagRef = useRef(null);
-  const [hashtagsArr, setHashtagsArr] = useState([]);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handelFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
+  const imageRef = useRef(null)
+  const textRef = useRef(null)
+  const hashtagRef = useRef(null)
+  const [hashtagsArr, setHashtagsArr] = useState([])
+  const [imagePreview, setImagePreview] = useState(null)
 
   const addHashtags = () => {
-    const newHash = [...hashtagsArr, hashtagRef.current.value.trim()];
-    setHashtagsArr(newHash);
-    hashtagRef.current.value = "";
-  };
+    const newHash = hashtagRef.current.value.trim()
+    if (newHash !== "") {
+      setHashtagsArr((prevHashtags) => [...prevHashtags, newHash])
+      hashtagRef.current.value = ""
+    }
+  }
 
   const handleHashtagInputChange = (e) => {
     if (e.key === " ") {
-      e.preventDefault();
+      e.preventDefault()
     }
-  };
+  }
 
   const removeHashtag = (indexToRemv) => {
     setHashtagsArr((prevHashtags) =>
       prevHashtags.filter((_, index) => index !== indexToRemv)
-    );
-  };
+    )
+  }
+
+  const handelImageChange = () => {
+    if (imageRef.current.files && imageRef.current.files[0]) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        setImagePreview(e.target.result)
+      }
+      reader.readAsDataURL(imageRef.current.files[0])
+    }
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const formData = new FormData();
-    formData.append("image", selectedFile);
-    formData.append("text", textRef.current.value);
-    formData.append("hashtag", JSON.stringify(hashtagsArr));
+    const formData = new FormData()
+    if (imageRef.current.files.length > 0) {
+      formData.append("image", imageRef.current.files[0])
+    } else {
+      formData.append("image", "null")
+    }
+    formData.append("text", textRef.current.value)
+    hashtagsArr.forEach((hashtag) => {
+      formData.append("hashtag", hashtag)
+    })
 
     try {
       await axios.post("http://localhost:3000/post", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-      });
+      })
 
-      // Reset form fields after successful upload
-      imageRef.current.value = "";
-      textRef.current.value = "";
-      setHashtagsArr([]);
-      setImagePreview(null);
-      setSelectedFile(null);
+      imageRef.current.value = ""
+      textRef.current.value = ""
+      setHashtagsArr([])
+      setImagePreview(null)
     } catch (error) {
-      console.error("Error uploading post:", error);
+      console.error("Error creating post:", error)
     }
-  };
+  }
 
   return (
     <div>
@@ -64,17 +75,11 @@ const Post = () => {
       <input
         placeholder="Add Image"
         type="file"
-        accept="images/*"
         ref={imageRef}
         id="imageID"
-        onChange={handelFileChange}
+        onChange={handelImageChange}
       />
-      {selectedFile && (
-        <img
-          src={URL.createObjectURL(selectedFile)}
-          alt="Preview"
-        />
-      )}
+      {imagePreview && <img src={imagePreview} alt="Preview" />}
       <br />
       <br />
       <input placeholder="Add Text" type="text" ref={textRef} id="textID" />
@@ -87,7 +92,6 @@ const Post = () => {
         id="hashtagID"
         onKeyDown={handleHashtagInputChange}
       />
-
       <button onClick={addHashtags}>+</button>
       <br />
       <br />
@@ -96,8 +100,7 @@ const Post = () => {
         {hashtagsArr.map((hash, index) => (
           <span key={index}>
             {" "}
-            #{hash}{" "}
-            <button onClick={() => removeHashtag(index)}>X</button>{" "}
+            #{hash} <button onClick={() => removeHashtag(index)}>X</button>{" "}
           </span>
         ))}
       </h3>
@@ -105,7 +108,7 @@ const Post = () => {
       <br />
       <button onClick={handleSubmit}>Post</button>
     </div>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post
