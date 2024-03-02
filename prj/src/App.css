@@ -18,21 +18,18 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 8px;
-
 }
 
 nav > img {
   max-width: 25vh;
   max-height: 15vh;
-  
-  border-radius: 50%;
 
+  border-radius: 50%;
 }
 
 nav > a {
   font-size: large;
   text-decoration: none;
-  
 }
 
 nav a:hover {
@@ -46,4 +43,45 @@ nav a:hover {
   background: #343a40; /* Sidebar background color */
   color: #fff; /* Text color */
   transition: all 0.3s;
+}
+
+#sidebarComp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 300px;
+  background: #adc4e6;
+  z-index: 5;
+}
+
+#sidebarComp > a {
+  color: #888;
+}
+
+.menu {
+  padding: 0px 50px 0px 70px;
+}
+
+.menu > ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.menu > ul > li > a {
+  display: block;
+  margin: 0 -50px 0 (-50px -20px);
+  padding: 10px 50px 10px 70px;
+}
+
+.bottom-padding {
+  height: 100px;
+}
+
+.nano {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
