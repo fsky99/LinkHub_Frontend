@@ -95,6 +95,12 @@ li {
   cursor: pointer;
   font-size: 30px;
 }
+.HashtagsChos{
+  /* margin-top: 10px; */
+  color: #A66C4B;
+  cursor:grab;
+  font-size: 15px;
+}
 
 img {
   width: 50px;
@@ -171,4 +177,11 @@ img {
 }
 .HeaderH1 {
   font-family: "Playfair Display", serif;
+}
+.hashtaChosIMG{
+width: 400px;
+height: 400px;
+}
+.hashtaChosTXT{
+font-size: 25px;
 }
