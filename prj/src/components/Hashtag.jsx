@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import Client from "../services/api"
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Client from '../services/api'
 
 const Hashtag = ({ user }) => {
   const [hashtags, setHashtags] = useState([])
@@ -9,11 +9,10 @@ const Hashtag = ({ user }) => {
   useEffect(() => {
     const fetchHashtags = async () => {
       try {
-        const response = await Client.get("/post")
-        console.log("hashtags returned" + response.data)
+        const response = await Client.get('/post')
         setHashtags(response.data)
       } catch (error) {
-        console.error("Error fetching hashtags:", error)
+        console.error('Error fetching hashtags:', error)
       }
     }
 

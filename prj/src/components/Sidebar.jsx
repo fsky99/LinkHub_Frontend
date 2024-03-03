@@ -1,19 +1,13 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Sidebar = () => {
+const Sidebar = ({ users }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
-  const [listUsers, setListUsers] = useState([])
   const [searchUsers, setSearchUsers] = useState('')
 
-  useEffect(() => {
-    getUsers()
-  }, [])
+  const [loggedInUser, setLoggedInUser] = useState(null)
 
-  const getUsers = async () => {
-    const response = await axios.get(`${BASE_URL}/user`)
-    setListUsers(response.data)
-  }
+  useEffect(() => {}, [])
 
   const handleChange = (e) => {
     if (e.target.name === 'search') {
@@ -33,21 +27,25 @@ const Sidebar = () => {
               id="search"
             />
           </div>
+
           <menu className="menu">
             <div>
-              {listUsers.map(
-                (usr) =>
-                  usr.userName
-                    .toLowerCase()
-                    .includes(searchUsers.toLowerCase()) && (
-                    <p key={usr._id}>
-                      <a href="#">{usr.userName}</a>
-                      <a href="">Visit</a>
-                    </p>
+              {users
+                ? users.map(
+                    (usr) =>
+                      usr.userName
+                        .toLowerCase()
+                        .includes(searchUsers.toLowerCase()) && (
+                        <p key={usr._id}>
+                          <a href="#">{usr.userName}</a>
+                          <a href="">Visit</a>
+                        </p>
+                      )
                   )
-              )}
+                : null}
             </div>
           </menu>
+
           <div className="bottom-padding"></div>
         </div>
       </aside>
