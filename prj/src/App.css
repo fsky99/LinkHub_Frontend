@@ -18,6 +18,7 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 8px;
+
 }
 
 nav > img {
@@ -30,6 +31,9 @@ nav > img {
 nav > a {
   font-size: large;
   text-decoration: none;
+
+  color: red;
+  margin-right: 10px;
 }
 
 nav a:hover {
@@ -85,3 +89,9 @@ li {
   height: 100%;
   overflow: hidden;
 }
+=======
+.Hashtags{
+  color: blue;
+  cursor: pointer;
+}
+
