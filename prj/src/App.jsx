@@ -45,7 +45,6 @@ function App() {
           <Route path="/profile" element={<Profile user={user} />} />
           
         </Routes>
-        <Hashtag user={user}/>
       </main>
     </div>
   )
