@@ -9,16 +9,15 @@ import SignIn from './components/SignIn'
 import Register from './components/Register'
 import Home from './components/Home'
 import FollowingPosts from './components/FollowingPosts'
-import Post from "./components/Post"
-import Hashtag from "./components/Hashtag"
-
+import Post from './components/Post'
+import Hashtag from './components/Hashtag'
 
 function App() {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
-    console.log("Token", token)
+    const token = localStorage.getItem('token')
+    console.log('Token', token)
     if (token) {
       checkToken()
     }
@@ -26,7 +25,7 @@ function App() {
 
   const checkToken = async () => {
     const user = await checkSession()
-    console.log("user", user)
+    console.log('user', user)
     await setUser(user)
   }
 
@@ -51,6 +50,7 @@ function App() {
             element={<FollowingPosts user={user} />}
           />
         </Routes>
+        {/* <Hashtag user={user}/> */}
       </main>
     </div>
   )
