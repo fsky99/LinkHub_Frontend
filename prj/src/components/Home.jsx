@@ -1,38 +1,25 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import Sidebar from './Sidebar'
-import Client from "../services/api"
-import Hashtag from "./Hashtag"
-const Home = ({ user }) => {
-  const [posts, setPosts] = useState([])
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await Client.get("/post")
-        console.log("posts returned" + response.data)
-        setPosts(response.data)
-      } catch (error) {
-        console.error("Error fetching posts:", error)
-      }
-    }
 
-    fetchPosts()
+const Home = ({ user }) => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL
+  const [listUsers, setListUsers] = useState([])
+
+  useEffect(() => {
+    getUsers()
   }, [])
 
-  const getRandomPosts = (count) => {
-    const shuffled = posts.sort(() => 0.6 - Math.random())
-    return shuffled.slice(1, count)
+  const getUsers = async () => {
+    const response = await axios.get(`${BASE_URL}/user`)
+    setListUsers(response.data)
+
   }
 
   return user ? (
     <div>
-      <Sidebar />
-      {getRandomPosts(6).map((p) => (
-        <div key={p._id} onClick={() => handleClick(p)}>
-          <img src={p.image} />
-          <h2>{p.text}</h2>
-        </div>
-      ))}
-      <Hashtag user={user} />
+      <Sidebar users={listUsers} />
+
     </div>
   ) : (
     <div>WElcome to LinkHub Page</div>
