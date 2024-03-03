@@ -36,7 +36,7 @@ const Hashtag = ({ user }) => {
           <div key={post._id} onClick={() => handleClick(post)}>
             {post.hashtag.map((tag, index) => (
               <span key={index} className="Hashtags">
-                #{tag} <br />
+                #{tag}  &nbsp;
               </span>
             ))}
           </div>
