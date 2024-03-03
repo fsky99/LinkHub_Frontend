@@ -47,3 +47,7 @@ nav a:hover {
   color: #fff; /* Text color */
   transition: all 0.3s;
 }
+.Hashtags{
+  color: blue;
+  cursor: pointer;
+}

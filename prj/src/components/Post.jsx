@@ -1,6 +1,7 @@
 import "../App.css"
 import { useRef, useState } from "react"
 import axios from "axios"
+import Client from "../services/api"
 
 const Post = () => {
   const imageRef = useRef(null)
@@ -54,7 +55,7 @@ const Post = () => {
     })
 
     try {
-      await axios.post("http://localhost:3000/post", formData, {
+      Client.post("/post" ,formData,{
         headers: {
           "Content-Type": "multipart/form-data",
         },

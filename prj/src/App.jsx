@@ -8,6 +8,7 @@ import Profile from "./components/Profile"
 import SignIn from "./components/SignIn"
 import Register from "./components/Register"
 import Home from "./components/Home"
+import Post from "./components/Post"
 
 function App() {
   const [user, setUser] = useState(null)
@@ -23,7 +24,7 @@ function App() {
   const checkToken = async () => {
     const user = await checkSession()
     console.log("user", user)
-    setUser(user)
+    await setUser(user)
   }
 
   const handleLogOut = () => {
@@ -42,7 +43,9 @@ function App() {
           <Route path="/register" element={<Register setUser={setUser} />} />
 
           <Route path="/profile" element={<Profile user={user} />} />
+          
         </Routes>
+        <Hashtag user={user}/>
       </main>
     </div>
   )
