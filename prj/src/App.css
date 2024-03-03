@@ -97,11 +97,11 @@ nav > img {
   width: 20%;
 }
 
-.profile > #post {
+/* .profile > #post { */
   /* grid-area: post;
   min-width: 30vh;
   min-height: 20vh; */
-}
+/* } */
 
 .sidebar-header {
   display: flex;
