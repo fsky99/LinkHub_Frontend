@@ -34,6 +34,8 @@ const Home = ({ user }) => {
             <Hashtag user={user} />
           </div>
           <div className="imagesClass">
+          <h1 className="HeaderH1">Posts</h1>
+
             {getRandomPosts(6).map((p) => (
               <div key={p._id} onClick={() => handleClick(p)}>
                 <img src={p.image} />

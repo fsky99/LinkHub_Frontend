@@ -30,7 +30,7 @@ const Hashtag = ({ user }) => {
 
   return user ? (
     <div>
-      <h1>Hashtags</h1>
+      <h1 className="HeaderH1">Hashtags</h1>
       <span>
         {getRandomHashtags(2).map((post) => (
           <div key={post._id} onClick={() => handleClick(post)}>
