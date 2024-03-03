@@ -92,3 +92,8 @@ li {
   color: blue;
   cursor: pointer;
 }
+
+.f-posts {
+  display: flex;
+  justify-content: center;
+}
