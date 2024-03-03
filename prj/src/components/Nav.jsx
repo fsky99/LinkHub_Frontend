@@ -9,7 +9,7 @@ const Nav = ({ user, handleLogOut }) => {
       {/* <img src="https://picsum.photos/seed/picsum/200/300" alt="" /> */}
       <Link to="/">LinkHub</Link>
       <Link to="/">Home</Link>
-      <Link to="/following">Following posts</Link>
+      <Link to="/followingPosts">Following posts</Link>
       <Link to="/profile">Profile</Link>
       <Link to="/signin" onClick={handleLogOut}>
         Sign out

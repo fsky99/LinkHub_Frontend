@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import Sidebar from './Sidebar'
 import Client from "../services/api"
 import Hashtag from "./Hashtag"
 const Home = ({ user }) => {
@@ -24,6 +25,7 @@ const Home = ({ user }) => {
 
   return user ? (
     <div>
+      <Sidebar />
       {getRandomPosts(6).map((p) => (
         <div key={p._id} onClick={() => handleClick(p)}>
           <img src={p.image} />
@@ -34,6 +36,7 @@ const Home = ({ user }) => {
     </div>
   ) : (
     <div>WElcome to LinkHub Page</div>
+
   )
 }
 
