@@ -6,15 +6,23 @@ import Hashtag from "./Hashtag"
 const Home = ({ user }) => {
   const [posts, setPosts] = useState([])
 
-
   useEffect(() => {
-    getUsers()
+    const fetchPosts = async () => {
+      try {
+        const response = await Client.get("/post")
+        console.log("posts returned" + response.data)
+        setPosts(response.data)
+      } catch (error) {
+        console.error("Error fetching posts:", error)
+      }
+    }
+
+    fetchPosts()
   }, [])
 
   const getRandomPosts = (count) => {
     const shuffled = posts.sort(() => 0.8 - Math.random())
     return shuffled.slice(1, count)
-
   }
 
   const handleClick = (post) => {
@@ -40,7 +48,7 @@ const Home = ({ user }) => {
                   style={{ flex: "0 0 25%", margin: "0 0.5rem 1rem 0" }}
                   onClick={() => handleClick(p)}
                 >
-                  <img src={p.image} className="IMGPOSTHOMEPAGE"/>
+                  <img src={p.image} className="IMGPOSTHOMEPAGE" />
                   <h2 className="TEXTPOSTHOMEPAGE">{p.text}</h2>
                 </div>
               ))}
@@ -48,7 +56,6 @@ const Home = ({ user }) => {
           </div>
         </div>
       </div>
-
     </div>
   ) : (
     <div>WElcome to LinkHub Page</div>

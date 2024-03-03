@@ -8,8 +8,13 @@ const Sidebar = ({ users }) => {
 
   const [loggedInUser, setLoggedInUser] = useState(null)
 
-  useEffect(() => {}, [])
-
+  useEffect(() => {
+    getUsers()
+  }, [])
+  const getUsers = async () => {
+    const response = await axios.get(`${BASE_URL}/user`)
+    setListUsers(response.data)
+  }
   const handleChange = (e) => {
     if (e.target.name === "search") {
       setSearchUsers(e.target.value)
@@ -45,7 +50,7 @@ const Sidebar = ({ users }) => {
                     </p>
 
                   )
-                : null}
+                )}
             </div>
           </menu>
 
