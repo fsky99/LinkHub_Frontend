@@ -26,7 +26,7 @@ const Sidebar = () => {
       <aside>
         <div>
           <div id="search-users">
-            <div class="ss">
+            <div className="ss">
               <input
                 type="text"
                 name="search"

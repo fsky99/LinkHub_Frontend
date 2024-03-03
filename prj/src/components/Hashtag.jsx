@@ -32,7 +32,7 @@ const Hashtag = ({ user }) => {
       post.hashtag.includes(hashtag)
     )
     if (postsWithHashtag.length > 0) {
-      setSelectedPost(postsWithHashtag[0]) // Selecting the first post with the clicked hashtag
+      setSelectedPost(postsWithHashtag[0])
     }
   }
 
@@ -53,13 +53,16 @@ const Hashtag = ({ user }) => {
 
       {selectedPost && (
         <div>
-       
           <div>
-            <img src={selectedPost.image} alt="Image" className="hashtaChosIMG"/>
+            <img
+              src={selectedPost.image}
+              alt="Image"
+              className="hashtaChosIMG"
+            />
             <p className="hashtaChosTXT"> {selectedPost.text}</p>
             {selectedPost.hashtag.map((h) => (
-            <span className="HashtagsChos">#{h} &nbsp;</span>
-          ))}
+              <span className="HashtagsChos">#{h} &nbsp;</span>
+            ))}
           </div>
         </div>
       )}

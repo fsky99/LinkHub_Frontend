@@ -177,6 +177,7 @@ img {
 }
 .HeaderH1 {
   font-family: "Playfair Display", serif;
+  color: #3B3840;
 }
 .hashtaChosIMG{
 width: 400px;
@@ -184,4 +185,13 @@ height: 400px;
 }
 .hashtaChosTXT{
 font-size: 25px;
+}
+.IMGPOSTHOMEPAGE{
+  width: 300px;
+  height: 300px;
+}
+.TEXTPOSTHOMEPAGE{
+  color: #A66C4B;
+  font-family: "Lucida Console", "Courier New", monospace;
+
 }
