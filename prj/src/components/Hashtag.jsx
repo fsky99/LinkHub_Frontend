@@ -56,7 +56,7 @@ const Hashtag = ({ user }) => {
       )}
     </div>
   ) : (
-    <div>no</div>
+    <div></div>
   )
 }
 
