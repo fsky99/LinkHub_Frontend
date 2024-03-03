@@ -50,3 +50,8 @@ nav a:hover {
   transition: all 0.3s;
 }
 
+.Hashtags{
+  color: blue;
+  cursor: pointer;
+}
+
