@@ -1,5 +1,6 @@
 body {
   margin: 0;
+
 }
 
 header {
@@ -7,46 +8,120 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   color: red;
   margin-top: 10px;
 }
 
 nav {
   font-size: 25px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   display: flex;
   justify-content: space-between;
   padding: 8px;
-  
-
 }
 
 nav > img {
   max-width: 25vh;
   max-height: 15vh;
-  
   border-radius: 50%;
-
 }
 
-nav > a {
+#navbar > a {
   font-size: large;
   text-decoration: none;
   color: red;
   margin-right: 10px;
 }
 
-nav a:hover {
-  background-color: #ddd; /* Change background color on hover */
-  color: #555; /* Change text color on hover */
+#navbar a:hover {
+  background-color: #ddd;
+  color: #555; 
 }
 
-#sidebar {
+.profile{
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  /* grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr; */
+  /* grid-template-rows: auto 1fr; */
+  /* grid-gap: 20px; */
+}
+
+.main-Profile{
+  
+  flex: 1;
+  
+}
+
+.profile > #sidebar {
   width: 250px;
   height: 100vh;
-  background: #343a40; /* Sidebar background color */
-  color: #fff; /* Text color */
-  transition: all 0.3s;
+  background: #c4d8eb; 
+  color: #fff;
+  
 }
 
+.main-Profile > .userImg {
+   /* grid-column: 2 / 3;
+
+ max-height: 25vh;
+  min-height: 1vh;
+  min-width: 20vh; 
+   max-width: 2vh; */
+  background-color: blueviolet;
+  /* margin: 0 10px;  */
+
+}
+
+.main-Profile > #following {
+ 
+  /* min-height: 10vh;
+  max-height: 15vh;
+  min-width: 20vh;
+  max-width: 21vh;
+  margin: 0 10px;
+  text-align: center; */
+  width: 20%;
+}
+
+.main-Profile > #followers {
+
+  /* min-height: 10vh;
+  max-height: 15vh;
+  min-width: 20vh;
+  max-width: 21vh;
+  margin: 0 10px;
+  text-align: center; */
+  width: 20%;
+}
+
+.profile > #post {
+  /* grid-area: post;
+  min-width: 30vh;
+  min-height: 20vh; */
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 50vh;
+  background-color: #ffffff;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-width: 5px;
+  border-color: black;
+}
+
+.sidebar-header > a {
+  text-align: center;
+  margin-bottom: 3vh;
+  color: rgb(0, 226, 79);
+}

@@ -5,7 +5,7 @@ const Nav = ({ user }) => {
   console.log("user:",user)
 
   const userOptions = (
-    <nav>
+    <nav id="navbar">
       {/* <img src="https://picsum.photos/seed/picsum/200/300" alt="" /> */}
       <Link to="/">LinkHub</Link>
       <Link to="/">Home</Link>
