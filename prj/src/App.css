@@ -14,11 +14,10 @@ header {
 
 nav {
   font-size: 25px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   display: flex;
   justify-content: space-between;
   padding: 8px;
-
 }
 
 nav > img {
@@ -47,9 +46,11 @@ nav a:hover {
   background: #343a40; /* Sidebar background color */
   color: #fff; /* Text color */
   transition: all 0.3s;
+  overflow-y: scroll;
 }
 
 #sidebarComp {
+  overflow-y: scroll;
   position: fixed;
   top: 50px;
   left: 0;
@@ -89,13 +90,43 @@ li {
   height: 100%;
   overflow: hidden;
 }
-=======
-.Hashtags{
+
+.Hashtags {
   color: blue;
   cursor: pointer;
 }
 
-img{
+img {
   width: 50px;
   height: 50px;
+}
+.HomePageContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.sideBarClass {
+  width: 250px;
+  /* background-color: green; */
+}
+
+.contentClass {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.innerContentRow {
+  display: flex;
+  flex-direction: column;
+}
+
+.imagesClass {
+  flex: 1;
+  /* background-color: pink; */
+}
+
+.hashtagsClass {
+  width: 200px;
+  /* background-color: black; */
 }

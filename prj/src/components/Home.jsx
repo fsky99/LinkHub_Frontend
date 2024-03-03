@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Sidebar from './Sidebar'
+import Sidebar from "./Sidebar"
 import Client from "../services/api"
 import Hashtag from "./Hashtag"
 const Home = ({ user }) => {
@@ -24,19 +24,28 @@ const Home = ({ user }) => {
   }
 
   return user ? (
-    <div>
-      <Sidebar />
-      {getRandomPosts(6).map((p) => (
-        <div key={p._id} onClick={() => handleClick(p)}>
-          <img src={p.image} />
-          <h2>{p.text}</h2>
+    <div className="HomePageContainer">
+      <div className="sideBarClass">
+        <Sidebar />
+      </div>
+      <div className="contentClass">
+        <div className="innerContentRow">
+          <div className="hashtagsClass">
+            <Hashtag user={user} />
+          </div>
+          <div className="imagesClass">
+            {getRandomPosts(6).map((p) => (
+              <div key={p._id} onClick={() => handleClick(p)}>
+                <img src={p.image} />
+                <h2>{p.text}</h2>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-      <Hashtag user={user} />
+      </div>
     </div>
   ) : (
     <div>WElcome to LinkHub Page</div>
-
   )
 }
 

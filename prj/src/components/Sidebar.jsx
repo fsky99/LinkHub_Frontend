@@ -23,8 +23,8 @@ const Sidebar = () => {
 
   return (
     <div>
-      <aside id="sidebarComp" className="nano">
-        <div className="nano-content">
+      <aside  >
+        <div >
           <div id="search-users">
             <input
               onChange={handleChange}
@@ -33,7 +33,7 @@ const Sidebar = () => {
               id="search"
             />
           </div>
-          <menu className="menu">
+          <menu >
             <div>
               {listUsers.map(
                 (usr) =>
