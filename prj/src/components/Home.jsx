@@ -13,14 +13,17 @@ const Home = ({ user }) => {
   const getUsers = async () => {
     const response = await axios.get(`${BASE_URL}/user`)
     setListUsers(response.data)
+
   }
 
   return user ? (
     <div>
       <Sidebar users={listUsers} />
+
     </div>
   ) : (
-    <div>///</div>
+    <div>WElcome to LinkHub Page</div>
+
   )
 }
 
