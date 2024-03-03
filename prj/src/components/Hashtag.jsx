@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Client from '../services/api'
 
+
 const Hashtag = ({ user }) => {
   const [hashtags, setHashtags] = useState([])
   const [selectedPost, setSelectedPost] = useState(null)
@@ -31,7 +32,7 @@ const Hashtag = ({ user }) => {
   return user ? (
     <div>
       <h1>Hashtags</h1>
-      <ul>
+      <span>
         {getRandomHashtags(2).map((post) => (
           <div key={post._id} onClick={() => handleClick(post)}>
             {post.hashtag.map((tag, index) => (
@@ -41,7 +42,7 @@ const Hashtag = ({ user }) => {
             ))}
           </div>
         ))}
-      </ul>
+      </span>
 
       {selectedPost && (
         <div>

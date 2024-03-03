@@ -51,7 +51,6 @@ function App() {
             element={<FollowingPosts user={user} />}
           />
         </Routes>
-        <Hashtag user={user}/>
       </main>
     </div>
   )
