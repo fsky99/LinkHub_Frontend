@@ -373,7 +373,7 @@ img {
 .HomePageNotLoggedinUserli {
   margin-bottom: 10px;
   font-family: "Georgia", serif;
-font-size: 20px;
+  font-size: 20px;
   color: #444;
 }
 
@@ -390,4 +390,149 @@ font-size: 20px;
 
 .HomePageNotLoggedinUserPar a:hover {
   color: #0056b3;
+}
+.inputClass {
+  max-width: 190px;
+  height: 30px;
+  border: 2px solid transparent;
+  outline: none;
+  border-bottom: 2px solid #3b3840;
+  caret-color: #3b3840;
+  background-color: #bfbcae;
+  padding: 5px;
+  transition: 0.5s linear;
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+
+.inputClass:focus {
+  border: 2px solid #a66c4b;
+  caret-color: #a66c4b;
+  color: #3b3840;
+  box-shadow: 4px 4px 10px #f2d4ae;
+}
+
+.inputClass:focus::placeholder {
+  color: #a66c4b;
+}
+.box {
+  
+  /* float: left; */
+  transition: 0.5s linear;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 8px;
+  text-align: center;
+  margin: 0 10px;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.box:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  border-bottom: 2px solid transparent;
+  border-left: 2px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(100%);
+}
+
+.box:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-top: 2px solid transparent;
+  border-right: 2px solid transparent;
+  box-sizing: border-box;
+  transform: translateX(-100%);
+}
+
+.box:hover {
+  box-shadow: 0 5px 15px #a66c4b;
+}
+
+.box:hover:before {
+  border-color: #a66c4b;
+  height: 100%;
+  transform: translateX(0);
+  transition: 0.3s transform linear, 0.3s height linear 0.3s;
+}
+
+.box:hover:after {
+  border-color: #a66c4b;
+  height: 100%;
+  transform: translateX(0);
+  transition: 0.3s transform linear, 0.3s height linear 0.5s;
+}
+
+.buttonsCreatePost {
+  color: #a66c4b;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+.CraetePostDiv {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.AddNewPost {
+  font-size: 35px;
+  color: #a66c4b;
+  font-family: "Playfair Display", serif;
+}
+.hashtagsAdded {
+  font-family: "Playfair Display", serif;
+  color: #a66c4b;
+}
+.addIMGClass {
+  color: #a66c4b;
+}
+.custum-file-upload {
+  display: inline-block;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #3b3840;
+  background-color: #bfbcae;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 48px 35px -48px #3b3840;
+}
+
+.custum-file-upload .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+  height: 80px;
+  fill: rgba(75, 85, 99, 1);
+}
+
+.custum-file-upload .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .text span {
+  font-weight: 400;
+  color: rgba(75, 85, 99, 1);
+}
+
+.custum-file-upload input {
+  display: none;
 }
