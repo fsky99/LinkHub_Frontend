@@ -106,7 +106,8 @@ const Post = ({ user }) => {
           onChange={handelImageChange}
         />
       </label>
-      <br /><br />
+      <br />
+      <br />
       <div>{imagePreview && <img src={imagePreview} alt="Preview" />}</div>
       <br />
       <br />
@@ -131,7 +132,7 @@ const Post = ({ user }) => {
         onKeyDown={handleHashtagInputChange}
       />
       <button className="buttonsCreatePost" onClick={addHashtags}>
-        <span class="box">+</span>
+        <span className="box 2">+</span>
       </button>
       <br />
       <br />
@@ -147,7 +148,7 @@ const Post = ({ user }) => {
                 className="buttonsCreatePost"
                 onClick={() => removeHashtag(index)}
               >
-                <span class="box">X</span>
+                <span className="box 3">X</span>
               </button>{" "}
             </h4>
           </span>
@@ -156,7 +157,7 @@ const Post = ({ user }) => {
       <br />
       <br />
       <button className="buttonsCreatePost" onClick={handleSubmit}>
-        <span class="box">Post</span>
+        <span className="box">Post</span>
       </button>
     </div>
   )

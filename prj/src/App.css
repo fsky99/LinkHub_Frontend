@@ -396,8 +396,8 @@ img {
   height: 30px;
   border: 2px solid transparent;
   outline: none;
-  border-bottom: 2px solid #3B3840;
-  caret-color: #3B3840;
+  border-bottom: 2px solid #3b3840;
+  caret-color: #3b3840;
   background-color: #bfbcae;
   padding: 5px;
   transition: 0.5s linear;
@@ -413,19 +413,18 @@ img {
 }
 
 .inputClass:focus::placeholder {
-  color: #A66C4B;
+  color: #a66c4b;
 }
 .box {
-  width: 50px;
-  height: auto;
-  float: left;
+  
+  /* float: left; */
   transition: 0.5s linear;
   position: relative;
   display: block;
   overflow: hidden;
-  padding: 15px;
+  padding: 8px;
   text-align: center;
-  margin: 0 5px;
+  margin: 0 10px;
   background: transparent;
   text-transform: uppercase;
   font-weight: 900;
@@ -497,20 +496,19 @@ img {
   font-family: "Playfair Display", serif;
   color: #a66c4b;
 }
-.addIMGClass{
+.addIMGClass {
   color: #a66c4b;
-  
 }
 .custum-file-upload {
-  display: inline-block; /* Change from flex to inline-block */
+  display: inline-block;
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  border: 2px dashed rgba(0,0,0,0.1);
-  background-color:#BFBCAE;
+  border: 2px dashed #3b3840;
+  background-color: #bfbcae;
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0px 48px 35px -48px rgba(0,0,0,0.1);
+  box-shadow: 0px 48px 35px -48px #3b3840;
 }
 
 .custum-file-upload .icon {
