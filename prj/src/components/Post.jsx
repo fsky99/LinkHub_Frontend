@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 import axios from "axios"
 import Client from "../services/api"
 
-const Post = () => {
+const Post = ({user}) => {
   const imageRef = useRef(null)
   const textRef = useRef(null)
   const hashtagRef = useRef(null)
@@ -47,7 +47,7 @@ const Post = () => {
     if (imageRef.current.files.length > 0) {
       formData.append("image", imageRef.current.files[0])
     } else {
-      formData.append("image", "null")
+      formData.append("image", "")
     }
     formData.append("text", textRef.current.value)
     hashtagsArr.forEach((hashtag) => {

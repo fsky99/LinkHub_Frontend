@@ -22,6 +22,9 @@ const Nav = ({ user, handleLogOut }) => {
       <Link className="linkstochange" to="/profile">
         Profile
       </Link>
+      <Link className="linkstochange" to="/craetePpost">
+        Create Post
+      </Link>
 
       <Link className="linkstochange" to="/signin" onClick={handleLogOut}>
         Sign out
