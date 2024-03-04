@@ -19,11 +19,10 @@ nav {
   justify-content: space-around;
   padding: 8px;
 }
-.linkstochange{
+.linkstochange {
   /* border: solid; */
   /* background-color: #BFBCAE; */
   border-radius: 10%;
-
 }
 
 nav > img {
@@ -202,3 +201,138 @@ img {
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
+/* register page css  */
+.content i {
+  margin-bottom: 41px;
+}
+
+.container {
+  border-radius: 1px;
+  padding: 50px 40px 20px 40px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: #f2d4ae;
+  border: 1px solid rgb(219, 219, 219);
+  text-align: center;
+  background: #3b3840;
+}
+
+.content__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+}
+
+.content__inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.content__form label {
+  border: 1px solid rgb(219, 219, 219);
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-width: 268px;
+  height: 38px;
+  border-radius: 3px;
+}
+
+.content__form span {
+  position: absolute;
+  text-overflow: ellipsis;
+  transform-origin: left;
+  font-size: 12px;
+  left: 8px;
+  pointer-events: none;
+  transition: transform ease-out 0.1s;
+}
+
+.content__form input {
+  width: 100%;
+  background: inherit;
+  border: 0;
+  color: white;
+  outline: none;
+  padding: 9px 8px 7px 8px;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.content__form input:valid + span {
+  transform: scale(calc(10 / 12)) translateY(-10px);
+}
+
+.content__form input:valid {
+  padding: 14px 0 2px 8px;
+  font-size: 12px;
+}
+
+.content__or-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 13px;
+  column-gap: 18px;
+  margin-top: 18px;
+}
+
+.content__or-text span:nth-child(3),
+.content__or-text span:nth-child(1) {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(219, 219, 219);
+}
+
+.content__forgot-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 28px;
+  row-gap: 21px;
+}
+
+.content__forgot-buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: #00376b;
+}
+
+.content__forgot-buttons button:first-child {
+  color: #385185;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.content__form button {
+  background: #bfbcae;
+  color: #3b3840;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 7px 16px;
+  cursor: pointer;
+}
+
+.content__form button:hover {
+  background: #bfbcae;
+}
+
+.content__form button:active:not(:hover) {
+  background: #3b3840;
+  opacity: 0.7;
+}
+.RegisterHeader{
+  font-family: 'Roboto', sans-serif;
+
+}
