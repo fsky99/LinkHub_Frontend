@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"
-import Sidebar from "./Sidebar"
-import Client from "../services/api"
-import Hashtag from "./Hashtag"
+import React, { useState, useEffect } from 'react'
+import Sidebar from './Sidebar'
+import Client from '../services/api'
+import Hashtag from './Hashtag'
+import Post from './Post'
 
 const Home = ({ user }) => {
   const [posts, setPosts] = useState([])
@@ -9,11 +10,11 @@ const Home = ({ user }) => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await Client.get("/post")
-        console.log("posts returned" + response.data)
+        const response = await Client.get('/post')
+        console.log('posts returned' + response.data)
         setPosts(response.data)
       } catch (error) {
-        console.error("Error fetching posts:", error)
+        console.error('Error fetching posts:', error)
       }
     }
 
@@ -26,7 +27,7 @@ const Home = ({ user }) => {
   }
 
   const handleClick = (post) => {
-    console.log("Clicked post:", post)
+    console.log('Clicked post:', post)
   }
 
   return user ? (
@@ -41,11 +42,11 @@ const Home = ({ user }) => {
           </div>
           <div className="imagesClass">
             <h1 className="HeaderH1">Posts</h1>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
               {getRandomPosts(8).map((p, index) => (
                 <div
                   key={index}
-                  style={{ flex: "0 0 25%", margin: "0 0.5rem 1rem 0" }}
+                  style={{ flex: '0 0 25%', margin: '0 0.5rem 1rem 0' }}
                   onClick={() => handleClick(p)}
                 >
                   <img src={p.image} className="IMGPOSTHOMEPAGE" />
