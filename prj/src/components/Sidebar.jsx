@@ -39,19 +39,21 @@ const Sidebar = ({ users }) => {
           </div>
           <menu>
             <div>
-              {listUsers.map(
-                (usr) =>
-                  usr.userName
-                    .toLowerCase()
-                    .includes(searchUsers.toLowerCase()) && (
-                    <p key={usr._id}>
-                      <a href="#" className="hideHyperlink">
-                        {usr.userName}
-                      </a>
-                      {/* <a href="" className="hideHyperlink">Visit</a> */}
-                    </p>
+              {users
+                ? users.map(
+                    (usr) =>
+                      usr.userName
+                        .toLowerCase()
+                        .includes(searchUsers.toLowerCase()) && (
+                        <p key={usr._id}>
+                          <a href="#" className="hideHyperlink">
+                            {usr.userName}
+                          </a>
+                          {/* <a href="" className="hideHyperlink">Visit</a> */}
+                        </p>
+                      )
                   )
-              )}
+                : null}
             </div>
           </menu>
 
