@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router"
 
@@ -16,8 +17,8 @@ function App() {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
-    console.log("Token", token)
+    const token = localStorage.getItem('token')
+    console.log('Token', token)
     if (token) {
       checkToken()
     }
@@ -25,7 +26,7 @@ function App() {
 
   const checkToken = async () => {
     const user = await checkSession()
-    console.log("user", user)
+    console.log('user', user)
     await setUser(user)
   }
 
@@ -51,6 +52,7 @@ function App() {
             element={<FollowingPosts user={user} />}
           />
         </Routes>
+        {/* <Hashtag user={user}/> */}
       </main>
     </div>
   )

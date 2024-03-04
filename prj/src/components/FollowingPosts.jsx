@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Sidebar from './Sidebar'
+import Client from '../services/api'
 
 const FollowingPosts = ({ user, users }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   const [listUsers, setListUsers] = useState([])
   const [postList, setPostList] = useState([])
+  const [likes, setLikes] = useState({})
 
   const [loggedInUser, setLoggedInUser] = useState(null)
 
@@ -13,6 +15,22 @@ const FollowingPosts = ({ user, users }) => {
     getFollowingPosts()
     findLoggedInUser()
   }, [])
+
+  const handleLikes = async (event, id) => {
+    const postToUpdate = await Client.get(`/post/${id}`)
+    if (postToUpdate.data && !postToUpdate.data.like.includes(user.id)) {
+      const likePost = { ...postToUpdate.data }
+      setLikes(likePost.like.length)
+      console.log(likePost)
+      likePost.like.push(user.id)
+
+      //setLikes(likePost.like.length)
+      await Client.put(`/post/${id}`, { like: likePost.like })
+      //setLikes(likes + 1)
+    } else {
+      console.log('already liked the post')
+    }
+  }
 
   const findLoggedInUser = async () => {
     const res = await axios.get(`${BASE_URL}/user/${user.id}`)
@@ -46,10 +64,21 @@ const FollowingPosts = ({ user, users }) => {
         <Sidebar users={loggedInUser} />
       </aside>
 
-      <div>
+      <div className="f-posts">
         {postList.map((p) => (
           <div key={p._id}>
             <p>{p.text}</p>
+
+            <button
+              id="btn"
+              type="button"
+              onClick={(event) => {
+                handleLikes(event, p._id)
+              }}
+            >
+              LIKE
+            </button>
+            <p>likes: {p.like.length} </p>
           </div>
         ))}
       </div>
