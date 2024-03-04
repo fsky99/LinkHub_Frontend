@@ -4,53 +4,68 @@ import Client from '../services/api'
 
 
 const Hashtag = ({ user }) => {
-  const [hashtags, setHashtags] = useState([])
+  const [posts, setPosts] = useState([])
   const [selectedPost, setSelectedPost] = useState(null)
 
   useEffect(() => {
-    const fetchHashtags = async () => {
+    const fetchPosts = async () => {
       try {
-        const response = await Client.get('/post')
-        setHashtags(response.data)
+        const response = await Client.get("/post")
+        console.log("Posts returned: ", response.data)
+        setPosts(response.data)
       } catch (error) {
-        console.error('Error fetching hashtags:', error)
+        console.error("Error fetching posts:", error)
+
       }
     }
 
-    fetchHashtags()
+    fetchPosts()
   }, [])
 
   const getRandomHashtags = (count) => {
-    const shuffled = hashtags.sort(() => 0.2 - Math.random())
-    return shuffled.slice(1, count)
+    const allHashtags = posts.reduce((acc, post) => {
+      return acc.concat(post.hashtag)
+    }, [])
+    const shuffled = allHashtags.sort(() => 0.5 - Math.random())
+    return shuffled.slice(0, count)
   }
 
-  const handleClick = (post) => {
-    setSelectedPost(post)
+  const handleClick = (hashtag) => {
+    const postsWithHashtag = posts.filter((post) =>
+      post.hashtag.includes(hashtag)
+    )
+    if (postsWithHashtag.length > 0) {
+      setSelectedPost(postsWithHashtag[0])
+    }
   }
 
   return user ? (
     <div>
-      <h1>Hashtags</h1>
-      <span>
-        {getRandomHashtags(2).map((post) => (
-          <div key={post._id} onClick={() => handleClick(post)}>
-            {post.hashtag.map((tag, index) => (
-              <span key={index} className="Hashtags">
-                #{tag} <br />
-              </span>
-            ))}
-          </div>
+      <h1 className="HeaderH1">Hashtags</h1>
+      <div>
+        {getRandomHashtags(5).map((hashtag, index) => (
+          <span
+            key={index}
+            className="Hashtags"
+            onClick={() => handleClick(hashtag)}
+          >
+            #{hashtag}&nbsp;
+          </span>
         ))}
-      </span>
+      </div>
 
       {selectedPost && (
         <div>
-          <h2>Selected Post</h2>
           <div>
-            {console.log(selectedPost.image)}
-            <img src={selectedPost.image} alt="Post Image" />
-            <p>Text: {selectedPost.text}</p>
+            <img
+              src={selectedPost.image}
+              alt="Image"
+              className="hashtaChosIMG"
+            />
+            <p className="hashtaChosTXT"> {selectedPost.text}</p>
+            {selectedPost.hashtag.map((h) => (
+              <span className="HashtagsChos">#{h} &nbsp;</span>
+            ))}
           </div>
         </div>
       )}
