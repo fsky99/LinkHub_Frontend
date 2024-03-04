@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 import axios from "axios"
 import Client from "../services/api"
 
-const Post = () => {
+const Post = ({user}) => {
   const imageRef = useRef(null)
   const textRef = useRef(null)
   const hashtagRef = useRef(null)

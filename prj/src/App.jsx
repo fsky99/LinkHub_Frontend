@@ -51,6 +51,7 @@ function App() {
             element={<FollowingPosts user={user} />}
           />
         </Routes>
+        <Post user={user}/>
       </main>
     </div>
   )
