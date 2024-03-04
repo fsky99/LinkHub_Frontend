@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const Sidebar = ({ users }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   const [listUsers, setListUsers] = useState([])
-  const [searchUsers, setSearchUsers] = useState("")
+  const [searchUsers, setSearchUsers] = useState('')
 
   const [loggedInUser, setLoggedInUser] = useState(null)
 
@@ -16,7 +16,7 @@ const Sidebar = ({ users }) => {
     setListUsers(response.data)
   }
   const handleChange = (e) => {
-    if (e.target.name === "search") {
+    if (e.target.name === 'search') {
       setSearchUsers(e.target.value)
     }
   }
@@ -30,7 +30,7 @@ const Sidebar = ({ users }) => {
               <input
                 type="text"
                 name="search"
-                class="inputSearch"
+                className="inputSearch"
                 id="search"
                 onChange={handleChange}
                 placeholder="Search"
@@ -45,12 +45,13 @@ const Sidebar = ({ users }) => {
                     .toLowerCase()
                     .includes(searchUsers.toLowerCase()) && (
                     <p key={usr._id}>
-                      <a href="#" className="hideHyperlink">{usr.userName}</a> 
+                      <a href="#" className="hideHyperlink">
+                        {usr.userName}
+                      </a>
                       {/* <a href="" className="hideHyperlink">Visit</a> */}
                     </p>
-
                   )
-                )}
+              )}
             </div>
           </menu>
 

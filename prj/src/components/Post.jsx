@@ -1,7 +1,7 @@
-import "../App.css"
-import { useRef, useState } from "react"
-import axios from "axios"
-import Client from "../services/api"
+import '../App.css'
+import { useRef, useState } from 'react'
+import axios from 'axios'
+import Client from '../services/api'
 
 const Post = () => {
   const imageRef = useRef(null)
@@ -12,14 +12,14 @@ const Post = () => {
 
   const addHashtags = () => {
     const newHash = hashtagRef.current.value.trim()
-    if (newHash !== "") {
+    if (newHash !== '') {
       setHashtagsArr((prevHashtags) => [...prevHashtags, newHash])
-      hashtagRef.current.value = ""
+      hashtagRef.current.value = ''
     }
   }
 
   const handleHashtagInputChange = (e) => {
-    if (e.key === " ") {
+    if (e.key === ' ') {
       e.preventDefault()
     }
   }
@@ -44,29 +44,30 @@ const Post = () => {
     e.preventDefault()
 
     const formData = new FormData()
+
     if (imageRef.current.files.length > 0) {
-      formData.append("image", imageRef.current.files[0])
+      formData.append('image', imageRef.current.files[0])
     } else {
-      formData.append("image", "null")
+      formData.append('image', 'null')
     }
-    formData.append("text", textRef.current.value)
+    formData.append('text', textRef.current.value)
     hashtagsArr.forEach((hashtag) => {
-      formData.append("hashtag", hashtag)
+      formData.append('hashtag', hashtag)
     })
 
     try {
-      Client.post("/post" ,formData,{
+      Client.post('/post', formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
-        },
+          'Content-Type': 'multipart/form-data'
+        }
       })
 
-      imageRef.current.value = ""
-      textRef.current.value = ""
+      imageRef.current.value = ''
+      textRef.current.value = ''
       setHashtagsArr([])
       setImagePreview(null)
     } catch (error) {
-      console.error("Error creating post:", error)
+      console.error('Error creating post:', error)
     }
   }
 
@@ -77,7 +78,8 @@ const Post = () => {
         placeholder="Add Image"
         type="file"
         ref={imageRef}
-        id="imageID"
+        name="image"
+        id="image"
         onChange={handelImageChange}
       />
       {imagePreview && <img src={imagePreview} alt="Preview" />}
@@ -100,8 +102,8 @@ const Post = () => {
         Hashtags:
         {hashtagsArr.map((hash, index) => (
           <span key={index}>
-            {" "}
-            #{hash} <button onClick={() => removeHashtag(index)}>X</button>{" "}
+            {' '}
+            #{hash} <button onClick={() => removeHashtag(index)}>X</button>{' '}
           </span>
         ))}
       </h3>
