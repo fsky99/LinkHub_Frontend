@@ -7,26 +7,31 @@ const FollowingPosts = ({ user, users }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   const [listUsers, setListUsers] = useState([])
   const [postList, setPostList] = useState([])
-  const [likes, setLikes] = useState({})
+  const [likes, setLikes] = useState('')
+
+  const [isLike, setIsLike] = useState(false)
 
   const [loggedInUser, setLoggedInUser] = useState(null)
 
   useEffect(() => {
     getFollowingPosts()
     findLoggedInUser()
-  }, [])
+  }, [isLike])
 
   const handleLikes = async (event, id) => {
     const postToUpdate = await Client.get(`/post/${id}`)
+
     if (postToUpdate.data && !postToUpdate.data.like.includes(user.id)) {
       const likePost = { ...postToUpdate.data }
-      setLikes(likePost.like.length)
+      //setLikes(likePost.like.length)
       console.log(likePost)
       likePost.like.push(user.id)
 
       //setLikes(likePost.like.length)
       await Client.put(`/post/${id}`, { like: likePost.like })
+      setIsLike(!isLike)
       //setLikes(likes + 1)
+      //setPostList(postList)
     } else {
       console.log('already liked the post')
     }
@@ -54,7 +59,17 @@ const FollowingPosts = ({ user, users }) => {
         setPostList(usr.posts)
       }
     })
+
+    // postList.forEach((pst) => {
+    //   setIsLike(true)
+    // })
   }
+
+  // const getLikePost = () => {
+  //   postList.forEach((pst) => {
+  //     setLikes(pst.like.length)
+  //   })
+  // }
 
   return (
     <div>
@@ -65,22 +80,24 @@ const FollowingPosts = ({ user, users }) => {
       </aside>
 
       <div className="f-posts">
-        {postList.map((p) => (
-          <div key={p._id}>
-            <p>{p.text}</p>
+        {postList
+          ? postList.map((p) => (
+              <div key={p._id}>
+                <p>{p.text}</p>
 
-            <button
-              id="btn"
-              type="button"
-              onClick={(event) => {
-                handleLikes(event, p._id)
-              }}
-            >
-              LIKE
-            </button>
-            <p>likes: {p.like.length} </p>
-          </div>
-        ))}
+                <button
+                  id="btn"
+                  type="button"
+                  onClick={(event) => {
+                    handleLikes(event, p._id)
+                  }}
+                >
+                  LIKE
+                </button>
+                {p.like && <p>likes: {p.like.length} </p>}
+              </div>
+            ))
+          : console.log('error')}
       </div>
     </div>
   )
