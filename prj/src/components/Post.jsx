@@ -47,7 +47,7 @@ const Post = ({user}) => {
     if (imageRef.current.files.length > 0) {
       formData.append("image", imageRef.current.files[0])
     } else {
-      formData.append("image", "null")
+      formData.append("image", "")
     }
     formData.append("text", textRef.current.value)
     hashtagsArr.forEach((hashtag) => {
