@@ -9,6 +9,7 @@ import SignIn from './components/SignIn'
 import Register from './components/Register'
 import Home from './components/Home'
 import FollowingPosts from './components/FollowingPosts'
+import EditProfile from './components/EditProfile'
 import Post from './components/Post'
 import Hashtag from './components/Hashtag'
 import UsersProfile from './components/UsersProfile'
@@ -46,6 +47,7 @@ function App() {
           <Route path="/register" element={<Register setUser={setUser} />} />
           <Route path="/profile" element={<Profile user={user} />} />
           <Route path="/craetePpost" element={<Post user={user} />} />
+          <Route path='edit' element={<EditProfile user={user} />} />
           <Route
             path="/followingPosts"
             element={<FollowingPosts user={user} />}
