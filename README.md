@@ -11,10 +11,10 @@ LinkHub consists of two main repositories:
 ## Project Description
 Our website enables users to post pictures specifically highlighting their travel experiences. Users can provide reviews of the places they have visited and engage in discussions through comments. Users can share their perspectives and connect with others who share similar interests in travel.
 
-## ERD
+## ERD:
 
 ![ERD](./img/ERD.png)
 
-## CHD
+## CHD:
 
 ![CHD](./img/CHD.png)

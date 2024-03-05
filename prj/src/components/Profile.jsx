@@ -1,12 +1,48 @@
-import '../App.css'
-import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from "react"
+import "../App.css"
+import {  useNavigate, useSearchParams } from "react-router-dom"
+import axios from "axios"
+import { Link } from 'react-router-dom'
+import {Router, Route, Routes } from 'react-router'
+import EditProfile from "./EditProfile"
 
 const Profile = ({ user }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   let navigate = useNavigate()
-  const [profile, setProfile] = useState({})
+  // console.log( "USER:",user);
+  // const [LoggedUser, setLoggedUser] = useState(null)
+  const [followers, setFollowers] = useState()
+  const [following, setFollowing] = useState()
+  const [userName, setUserName] = useState(null)
+  // const [posts, setpost] = useState([])
+ 
+  const [profile, setProfile] = useState([])
+
+
+  const findLoggedUser = async () => {
+    // if(!user){
+    const res = await axios.get(`${BASE_URL}/user/${user.id}`)
+    // }
+
+    setProfile(res.data)
+   
+ 
+    console.log("profile", profile)   
+ 
+    setFollowers(res.data.followers.length)
+    setFollowing(res.data.following.length)
+    setUserName(res.data.userName)
+    // setpost(res.data.posts)
+    // console.log(res.data);
+  }     
+
+  useEffect(() => {
+    findLoggedUser()
+    // console.log(profile);
+  }, [user?.id])
+ 
+  // console.log("user1:", user)
+  // const [profile, setProfile] = useState({})
 
   useEffect(() => {
     findLoggedInUser()
@@ -27,7 +63,11 @@ const Profile = ({ user }) => {
     <div className="profile">
       <nav id="sidebar">
         <div className="sidebar-header">
-          <a href="#">Edit Profile</a>
+          {/* <a href="/edit/:id">Edit Profile</a> */}
+          <Link to="/edit">Edit Profile</Link>
+          <a href="#">Edit Picture</a>
+          <a href="#">Request Verification</a>
+          <a href="#">Create Hashtags</a>
         </div>
       </nav>
       <div className="main-profile">
@@ -68,7 +108,7 @@ const Profile = ({ user }) => {
   ) : (
     <div className="protected">
       <h3>Oops! You must be signed in to do that!</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button>
+      <button onClick={() => navigate("/signin")}>Sign In</button>
     </div>
   )
 }
