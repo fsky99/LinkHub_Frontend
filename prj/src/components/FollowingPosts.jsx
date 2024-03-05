@@ -35,6 +35,7 @@ const FollowingPosts = ({ user, users }) => {
         postId: postId,
       }
       await Client.post(`/comment`, newComment)
+      commentText = ''
     } catch (error) {
       console.error("Error adding comment:", error)
     }
@@ -46,10 +47,10 @@ const FollowingPosts = ({ user, users }) => {
     let userDataData = userData.data
     const postToShow = await Client.get(`/post/${id}`)
     let postComments = postToShow.data.comment
-    console.log("Post comments", postComments)
+    // console.log("Post comments", postComments)
     const CommentsToShow = await Client.get(`/comment`)
     let commetsToshowVar = CommentsToShow.data
-    console.log("Comments to show var : ", commetsToshowVar)
+    // console.log("Comments to show var : ", commetsToshowVar)
 
     for (let i = 0; i < postComments.length; i++) {
       for (let j = 0; j < commetsToshowVar.length; j++) {
@@ -69,7 +70,7 @@ const FollowingPosts = ({ user, users }) => {
     }
 
     setComments(CommentsToShowOnPage)
-    console.log("Final comments:", CommentsToShowOnPage)
+    // console.log("Final comments:", CommentsToShowOnPage)
   }
 
   const handleLikes = async (event, id) => {
@@ -90,11 +91,11 @@ const FollowingPosts = ({ user, users }) => {
     const res = await axios.get(`${BASE_URL}/user/${user.id}`)
     setLoggedInUser(res.data.following)
   }
+  let usersFollowingPosts = []
 
   const getFollowingPosts = async () => {
     const response = await axios.get(`${BASE_URL}/user`)
     let userData
-
     const allUsers = response.data
 
     allUsers.forEach((loggedIndata) => {
@@ -102,14 +103,17 @@ const FollowingPosts = ({ user, users }) => {
         userData = loggedIndata
       }
     })
-    console.log("user foloo", userData.following)
+    // console.log("user foloo", userData.following)
     allUsers.forEach((usr) => {
-      console.log("Ff", userData.following)
+      // console.log("Ff", userData.following)
       if (userData.following.includes(usr._id)) {
-        console.log("posts here", usr)
-        setPostList(usr.posts)
+        // console.log("posts here", usr)
+        usersFollowingPosts.push(usr.posts)
       }
     })
+
+    setPostList(usersFollowingPosts)
+    // console.log("users following  posts:" , usersFollowingPosts)
   }
 
   return (
@@ -123,59 +127,60 @@ const FollowingPosts = ({ user, users }) => {
       <div className="f-posts">
         {console.log("posts please", postList)}
         {postList
-          ? postList.map((p) => (
-              <div key={p._id}>
-                <img src={p.image} />
-                <p>{p.text}</p>
-                <button
-                  id="btn"
-                  type="button"
-                  onClick={(event) => {
-                    handleLikes(event, p._id)
-                  }}
-                >
-                  LIKE
-                </button>
-                {p.like && <p>likes: {p.like.length} </p>}
-                <h4>comments:</h4>
-                <form
-                  onSubmit={(event) => {
-                    event.preventDefault()
-                    const commentText = event.target.elements.commentText.value
-                    if (commentText.trim() !== "") {
-                      addComment(p._id, commentText)
-                    }
-                  }}
-                >
-                  <input
-                    type="text"
-                    name="commentText"
-                    placeholder="Add Comment"
-                  />
-                  <button id="btn" type="submit">
-                    Add
+          ? postList.map((postss) =>
+              postss.map((p) => (
+                <div key={p._id}>
+                  <img src={p.image} />
+                  <p>{p.text}</p>
+                  <button
+                    id="btn"
+                    type="button"
+                    onClick={(event) => {
+                      handleLikes(event, p._id)
+                    }}
+                  >
+                    LIKE
                   </button>
-                </form>
-                {/* {p.comment} */}
-                <br />
-                <button onClick={() => showComments(p._id)}>
-                  Show Comments
-                </button>
-                {/* {showComments(p._id)} */}
-                {console.log(comments)}
-
-               
-              </div>
-            )
+                  {p.like && <p>likes: {p.like.length} </p>}
+                  <h4>comments:</h4>
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault()
+                      const commentText =
+                        event.target.elements.commentText.value
+                      if (commentText.trim() !== "") {
+                        addComment(p._id, commentText)
+                        event.target.elements.commentText.value = ''
+                      }
+                    }}
+                  >
+                    <input
+                      type="text"
+                      name="commentText"
+                      placeholder="Add Comment"
+                    />
+                    <button id="btn" type="submit">
+                      Add
+                    </button>
+                  </form>
+                  {/* {p.comment} */}
+                  <br />
+                  <button onClick={() => showComments(p._id)}>
+                    Show Comments
+                  </button>
+                  {/* {showComments(p._id)} */}
+                  {console.log(comments)}
+                </div>
+              ))
             )
           : console.log("error")}
-           {comments
-                  ? comments.map((com) => (
-                      <p key={com.commentID}>
-                        {com.userName} :{com.Comment}
-                      </p>
-                    ))
-                  : null}
+        {comments
+          ? comments.map((com) => (
+              <p key={com.commentID}>
+                {com.userName} :{com.Comment}
+              </p>
+            ))
+          : null}
       </div>
     </div>
   )
