@@ -7,6 +7,7 @@ const Register = () => {
 
   const [formValues, setFormValues] = useState({
     userName: "",
+    country: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -20,11 +21,13 @@ const Register = () => {
     e.preventDefault()
     await RegisterUser({
       userName: formValues.userName,
+      country: formValues.country,
       email: formValues.email,
       password: formValues.password,
     })
     setFormValues({
       userName: "",
+      country: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -48,6 +51,17 @@ const Register = () => {
                 required
               />
               <span>Name</span>
+            </label>
+
+            <label htmlFor="country">
+              <input
+                onChange={handleChange}
+                name="country"
+                type="text"
+                value={formValues.country}
+                required
+              />
+              <span>Country</span>
             </label>
 
             <label htmlFor="email">
