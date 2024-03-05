@@ -6,7 +6,7 @@ const Register = () => {
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
-    name: "",
+    userName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -19,12 +19,12 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await RegisterUser({
-      name: formValues.name,
+      userName: formValues.userName,
       email: formValues.email,
       password: formValues.password,
     })
     setFormValues({
-      name: "",
+      userName: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -42,9 +42,9 @@ const Register = () => {
             <label htmlFor="name">
               <input
                 onChange={handleChange}
-                name="name"
+                name="userName"
                 type="text"
-                value={formValues.name}
+                value={formValues.userName}
                 required
               />
               <span>Name</span>
