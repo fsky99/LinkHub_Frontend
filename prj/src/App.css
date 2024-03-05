@@ -536,11 +536,21 @@ img {
   display: none;
 }
 
-.main-profile {
+.main-profile-data {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 .profile {
   display: flex;
+}
+
+.main-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-post {
+  border: 1px solid black;
 }
