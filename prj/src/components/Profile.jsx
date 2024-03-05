@@ -1,5 +1,5 @@
 import '../App.css'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
@@ -57,6 +57,7 @@ const Profile = ({ user }) => {
                   <p>{userpost.text}</p>
                   <img src={userpost.image} alt="" />
                   <button>Edit post</button>
+                  <Link to={`/EditPost/${userpost._id}`}>Edit post</Link>
                   <button>Delete Post</button>
                   {userpost.like && <p>likes: {userpost.like.length} </p>}
                 </div>
