@@ -17,7 +17,7 @@ const EditProfile = ({ user }) => {
       const res = await axios.get(`${BASE_URL}/user/${user.id}`)
       // setProfile(res.data)
     // console.log(res.data);
-    setProfile(res.data)
+    setProfile(res.data) 
     setName(res.data.userName)
     setEmail(res.data.email)
     setCountry(res.data.country)
@@ -93,6 +93,7 @@ const EditProfile = ({ user }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={email}
+            disabled
           />
         </label>
 

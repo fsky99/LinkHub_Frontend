@@ -7,6 +7,7 @@ import {Router, Route, Routes } from 'react-router'
 import EditProfile from "./EditProfile"
 
 const Profile = ({ user }) => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL
   let navigate = useNavigate()
   // console.log( "USER:",user);
   // const [LoggedUser, setLoggedUser] = useState(null)
@@ -17,7 +18,6 @@ const Profile = ({ user }) => {
  
   const [profile, setProfile] = useState([])
 
-  var BASE_URL = import.meta.env.VITE_BASE_URL
 
   const findLoggedUser = async () => {
     // if(!user){
@@ -42,6 +42,23 @@ const Profile = ({ user }) => {
   }, [user?.id])
  
   // console.log("user1:", user)
+  // const [profile, setProfile] = useState({})
+
+  useEffect(() => {
+    findLoggedInUser()
+  }, [])
+
+  const findLoggedInUser = async () => {
+    console.log('userrrr: ', user)
+    const res = await axios.get(`${BASE_URL}/user/${user.id}`)
+    console.log('response: ', res.data)
+    setProfile(res.data)
+  }
+
+  const handleCreatePost = async () => {
+    navigate('/craetePpost')
+  }
+
   return user ? (
     <div className="profile">
       <nav id="sidebar">
@@ -53,46 +70,41 @@ const Profile = ({ user }) => {
           <a href="#">Create Hashtags</a>
         </div>
       </nav>
+      <div className="main-profile">
+        <div className="main-profile-data">
+          <p>userName: {profile.userName}</p>
+          {profile.following ? (
+            <p>following: {profile.following.length}</p>
+          ) : (
+            <p>following: 0</p>
+          )}
 
-      {/* <div className="main-Profile">
-        <div className="profile-flex">
-          <img src="" alt="" className="userImg" />
-
-          <h3>{userName}</h3>
-
-          <div id="following">
-            <h5>{following} Following</h5>
-          </div>
-
-          <div id="followers">
-            <h5>{followers} Followers</h5>
-          </div>
+          {profile.followers ? (
+            <p>followers: {profile.followers.length}</p>
+          ) : (
+            <p>followers: 0</p>
+          )}
         </div>
-      </div> */}
 
-
-
-
-
-      <h4>userName: {userName} </h4>
-        
-        <h4>followers: {followers} </h4>
-          
-       <h4> following: {following}</h4> 
-  
-      {/* {profile.map((e) => (
-        <div id="post" key={e._id}>
-          <h5>username: {e.userName}</h5>
-          <h5>email: {e.email}</h5>
-        </div>
-      ))}  */}
-      {/* {profile.posts.map((e)=>(
-        <div key={e._id}>
-          <h1>{e.text}</h1>
-
+        <div className="user-post">
+          <div className="user-post-header">
+            <button onClick={handleCreatePost}>Create post</button>
           </div>
-      ))}             */}
-    </div> 
+          <p>User posts:</p>
+          {profile.posts
+            ? profile.posts.map((userpost) => (
+                <div key={userpost._id}>
+                  <p>{userpost.text}</p>
+                  <img src={userpost.image} alt="" />
+                  <button>Edit post</button>
+                  <button>Delete Post</button>
+                  {userpost.like && <p>likes: {userpost.like.length} </p>}
+                </div>
+              ))
+            : null}
+        </div>
+      </div>
+    </div>
   ) : (
     <div className="protected">
       <h3>Oops! You must be signed in to do that!</h3>
