@@ -9,7 +9,7 @@ import Profile from './components/Profile'
 import SignIn from './components/SignIn'
 import Register from './components/Register'
 import Home from './components/Home'
-
+import EditProfile from './components/EditProfile'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -41,8 +41,9 @@ function App() {
           <Route path="/" element={<Home user={user} />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
-
+          <Route path='edit' element={<EditProfile user={user} />} />
           <Route path="/profile" element={<Profile user={user} />} />
+          
         </Routes>
 
       </main>

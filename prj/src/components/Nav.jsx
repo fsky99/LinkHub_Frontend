@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 
 const Nav = ({ user, handleLogOut }) => {
-  console.log('user:', user)
+  // console.log('user:', user)
 
   const userOptions = (
     <nav id="navbar">
@@ -13,7 +13,7 @@ const Nav = ({ user, handleLogOut }) => {
       <Link to="/profile">Profile</Link>
       <Link to="/signin" onClick={handleLogOut}>
         Sign out
-      </Link>
+      </Link> 
       {/* Create Post */}
     </nav>
   )
