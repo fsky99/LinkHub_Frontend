@@ -6,8 +6,11 @@ const Nav = ({ user, handleLogOut }) => {
 
   const userOptions = (
     <nav id="navbar">
-      {/* <img src="https://picsum.photos/seed/picsum/200/300" alt="" /> */}
-      <Link className="linkstochange" to="/">
+      {/* <img  src="../img/icon.png" alt="image" /> */}
+
+<img src="../img/icon.png" alt="image" />
+
+      <Link className="linkstochange link-hub-logo" to="/" >
         LinkHub
       </Link>
 
@@ -36,6 +39,7 @@ const Nav = ({ user, handleLogOut }) => {
   const publicOptions = (
     <nav>
       {/* <img src="https://picsum.photos/seed/picsum/200/300" alt="" /> */}
+      
       <Link to="/">LinkHub</Link>
       <Link to="/">Home</Link>
       <Link to="/register">Register</Link>

@@ -25,11 +25,11 @@ nav {
   border-radius: 10%;
 }
 
-nav > img {
+/* nav > img {
   max-width: 25vh;
   max-height: 15vh;
   border-radius: 50%;
-}
+} */
 
 #navbar > a {
   font-size: large;
