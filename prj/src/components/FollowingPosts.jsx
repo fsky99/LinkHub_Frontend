@@ -8,7 +8,7 @@ const FollowingPosts = ({ user, users }) => {
   const [listUsers, setListUsers] = useState([])
   const [postList, setPostList] = useState([])
   const [likes, setLikes] = useState("")
-  const [comments, setComments] = useState("")
+  const [comments, setComments] = useState(null)
   const [isLike, setIsLike] = useState(false)
 
   const [loggedInUser, setLoggedInUser] = useState(null)
@@ -32,32 +32,43 @@ const FollowingPosts = ({ user, users }) => {
         comment: commentText,
         date: new Date().toISOString(),
         userId: user.id,
-        postId : id
+        postId: id,
       }
       await Client.post(`/comment`, newComment)
-
-
-
-      // postToUpdate.comments.push(newComment)
-
-      // const updateResponse = await Client.put(`/post/${id}`, postToUpdate)
-
-      // if (updateResponse.status === 200) {
-      //   setPostList((prevPostList) => {
-      //     return prevPostList.map((post) => {
-      //       if (post._id === id) {
-      //         return {
-      //           ...post,
-      //           comments: postToUpdate.comments,
-      //         }
-      //       }
-      //       return post
-      //     })
-      //   })
-      // }
     } catch (error) {
       console.error("Error adding comment:", error)
     }
+  }
+  let CommentsToShowOnPage = []
+
+  const showComments = async (id) => {
+    const userData = await Client.get(`/user`)
+    let userDataData = userData.data
+    const postToShow = await Client.get(`/post/${id}`)
+    let postComments = postToShow.data.comment
+    console.log("Post comments", postComments)
+    const CommentsToShow = await Client.get(`/comment`)
+    let commetsToshowVar = CommentsToShow.data
+    console.log("Comments to show var : ", commetsToshowVar)
+
+    for (let i = 0; i < postComments.length; i++) {
+      for (let j = 0; j < commetsToshowVar.length; j++) {
+        for (let k = 0; k < userDataData.length; k++) {
+          if (postComments[i]._id === commetsToshowVar[j]._id)
+            if (commetsToshowVar[j].userId === userDataData[k]._id) {
+              let commentData = {
+                commentID: commetsToshowVar[j]._id,
+                commentDate: commetsToshowVar[j].date,
+                Comment: commetsToshowVar[j].comment,
+                userName: userDataData[k].userName,
+              }
+              CommentsToShowOnPage.push(commentData)
+            }
+        }
+      }
+    }
+    setComments(CommentsToShowOnPage)
+    console.log("Final comments:", CommentsToShowOnPage)
   }
 
   const handleLikes = async (event, id) => {
@@ -117,7 +128,6 @@ const FollowingPosts = ({ user, users }) => {
               <div key={p._id}>
                 <img src={p.image} />
                 <p>{p.text}</p>
-
                 <button
                   id="btn"
                   type="button"
@@ -147,7 +157,21 @@ const FollowingPosts = ({ user, users }) => {
                     Add
                   </button>
                 </form>
-                {p.comment}
+                {/* {p.comment} */}
+                <br />
+                <button onClick={() => showComments(p._id)}>
+                  Show Comments
+                </button>
+                {/* {showComments(p._id)} */}
+                {console.log(comments)}
+                {comments
+                  ? comments.map((com) => (
+                      <p key={com.commentID}>
+                         {com.userName} : 
+                          {com.Comment} 
+                         </p>
+                    ))
+                  : null}
               </div>
             ))
           : console.log("error")}
