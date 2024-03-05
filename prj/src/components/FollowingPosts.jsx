@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
-import Sidebar from "./Sidebar"
-import Client from "../services/api"
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import Sidebar from './Sidebar'
+import Client from '../services/api'
 
 const FollowingPosts = ({ user, users }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   const [listUsers, setListUsers] = useState([])
-  const [postList, setPostList] = useState([])
-  const [likes, setLikes] = useState("")
+  const [postList, setPostList] = useState(null)
+  const [likes, setLikes] = useState('')
   const [comments, setComments] = useState(null)
   const [isLike, setIsLike] = useState(false)
 
@@ -32,11 +32,11 @@ const FollowingPosts = ({ user, users }) => {
         comment: commentText,
         date: new Date().toISOString(),
         userId: user.id,
-        postId: id,
+        postId: id
       }
       await Client.post(`/comment`, newComment)
     } catch (error) {
-      console.error("Error adding comment:", error)
+      console.error('Error adding comment:', error)
     }
   }
   let CommentsToShowOnPage = []
@@ -46,10 +46,10 @@ const FollowingPosts = ({ user, users }) => {
     let userDataData = userData.data
     const postToShow = await Client.get(`/post/${id}`)
     let postComments = postToShow.data.comment
-    console.log("Post comments", postComments)
+    console.log('Post comments', postComments)
     const CommentsToShow = await Client.get(`/comment`)
     let commetsToshowVar = CommentsToShow.data
-    console.log("Comments to show var : ", commetsToshowVar)
+    console.log('Comments to show var : ', commetsToshowVar)
 
     for (let i = 0; i < postComments.length; i++) {
       for (let j = 0; j < commetsToshowVar.length; j++) {
@@ -60,7 +60,7 @@ const FollowingPosts = ({ user, users }) => {
                 commentID: commetsToshowVar[j]._id,
                 commentDate: commetsToshowVar[j].date,
                 Comment: commetsToshowVar[j].comment,
-                userName: userDataData[k].userName,
+                userName: userDataData[k].userName
               }
               CommentsToShowOnPage.push(commentData)
             }
@@ -68,7 +68,7 @@ const FollowingPosts = ({ user, users }) => {
       }
     }
     setComments(CommentsToShowOnPage)
-    console.log("Final comments:", CommentsToShowOnPage)
+    console.log('Final comments:', CommentsToShowOnPage)
   }
 
   const handleLikes = async (event, id) => {
@@ -81,7 +81,7 @@ const FollowingPosts = ({ user, users }) => {
       await Client.put(`/post/${id}`, { like: likePost.like })
       setIsLike(!isLike)
     } else {
-      console.log("already liked the post")
+      console.log('already liked the post')
     }
   }
 
@@ -101,9 +101,11 @@ const FollowingPosts = ({ user, users }) => {
         userData = loggedIndata
       }
     })
-
+    console.log('user foloo', userData.following)
     allUsers.forEach((usr) => {
-      if (usr._id.includes(userData.following)) {
+      console.log('Ff', userData.following)
+      if (userData.following.includes(usr._id)) {
+        console.log('posts here', usr)
         setPostList(usr.posts)
       }
     })
@@ -118,6 +120,7 @@ const FollowingPosts = ({ user, users }) => {
       </aside>
 
       <div className="f-posts">
+        {console.log('posts please', postList)}
         {postList
           ? postList.map((p) => (
               <div key={p._id}>
@@ -138,7 +141,7 @@ const FollowingPosts = ({ user, users }) => {
                   onSubmit={(event) => {
                     event.preventDefault()
                     const commentText = event.target.elements.commentText.value
-                    if (commentText.trim() !== "") {
+                    if (commentText.trim() !== '') {
                       addComment(p._id, commentText)
                     }
                   }}
@@ -162,14 +165,13 @@ const FollowingPosts = ({ user, users }) => {
                 {comments
                   ? comments.map((com) => (
                       <p key={com.commentID}>
-                         {com.userName} : 
-                          {com.Comment} 
-                         </p>
+                        {com.userName} :{com.Comment}
+                      </p>
                     ))
                   : null}
               </div>
             ))
-          : console.log("error")}
+          : console.log('error')}
       </div>
     </div>
   )
