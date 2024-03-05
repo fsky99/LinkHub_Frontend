@@ -2,6 +2,7 @@ import '../App.css'
 import { useNavigate, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Profile = ({ user }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
@@ -27,7 +28,8 @@ const Profile = ({ user }) => {
     <div className="profile">
       <nav id="sidebar">
         <div className="sidebar-header">
-          <a href="#">Edit Profile</a>
+          {/* <a href="#">Edit Profile</a> */}
+          <Link to="/edit">Edit Profile</Link>
         </div>
       </nav>
       <div className="main-profile">
