@@ -59,17 +59,7 @@ const FollowingPosts = ({ user, users }) => {
         setPostList(usr.posts)
       }
     })
-
-    // postList.forEach((pst) => {
-    //   setIsLike(true)
-    // })
   }
-
-  // const getLikePost = () => {
-  //   postList.forEach((pst) => {
-  //     setLikes(pst.like.length)
-  //   })
-  // }
 
   return (
     <div>

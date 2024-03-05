@@ -3,9 +3,12 @@ import Sidebar from './Sidebar'
 import Client from '../services/api'
 import Hashtag from './Hashtag'
 import Post from './Post'
+import axios from 'axios'
 
 const Home = ({ user }) => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL
   const [posts, setPosts] = useState([])
+  const [listUsers, setListUsers] = useState([])
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -19,7 +22,13 @@ const Home = ({ user }) => {
     }
 
     fetchPosts()
+    getUsers()
   }, [])
+
+  const getUsers = async () => {
+    const response = await axios.get(`${BASE_URL}/user`)
+    setListUsers(response.data)
+  }
 
   const getRandomPosts = (count) => {
     const shuffled = posts.sort(() => 0.8 - Math.random())
@@ -33,7 +42,7 @@ const Home = ({ user }) => {
   return user ? (
     <div className="HomePageContainer">
       <div className="sideBarClass">
-        <Sidebar />
+        <Sidebar users={listUsers} />
       </div>
       <div className="contentClass">
         <div className="innerContentRow">
@@ -71,7 +80,7 @@ const Home = ({ user }) => {
       <h3 class="HomePageNotLoggedinUserhThree">At LinkHub, you can:</h3>
       <ul class="HomePageNotLoggedinUserul">
         <li class="HomePageNotLoggedinUserli">
-          <strong class="HomePageNotLoggedinUserStrong">Discover:</strong>{" "}
+          <strong class="HomePageNotLoggedinUserStrong">Discover:</strong>{' '}
           Explore a diverse range of user profiles and interests, and uncover
           new connections that resonate with you.
         </li>

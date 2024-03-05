@@ -14,7 +14,7 @@ header {
 
 nav {
   font-size: 25px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   justify-content: space-around;
   padding: 8px;
@@ -119,7 +119,7 @@ img {
 
 .sideBarClass {
   width: 250px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   /* background-color: green; */
 }
 
@@ -149,7 +149,7 @@ img {
   border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   color: #333;
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: 'Helvetica Neue', sans-serif;
   font-size: 16px;
   padding: 10px;
   width: 100%;
@@ -182,7 +182,7 @@ img {
   text-decoration: none;
 }
 .HeaderH1 {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   color: #3b3840;
 }
 .hashtaChosIMG {
@@ -198,7 +198,7 @@ img {
 }
 .TEXTPOSTHOMEPAGE {
   color: #a66c4b;
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 }
 
 /* register page css  */
@@ -333,7 +333,7 @@ img {
   opacity: 0.7;
 }
 .RegisterHeader {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Heading Two */
@@ -354,7 +354,7 @@ img {
 }
 /* Paragraph */
 .HomePageNotLoggedinUserPar {
-  font-family: "Georgia", serif;
+  font-family: 'Georgia', serif;
   font-size: 25px;
   color: #3b3840;
   line-height: 1.6;
@@ -372,7 +372,7 @@ img {
 /* List Item */
 .HomePageNotLoggedinUserli {
   margin-bottom: 10px;
-  font-family: "Georgia", serif;
+  font-family: 'Georgia', serif;
   font-size: 20px;
   color: #444;
 }
@@ -416,7 +416,6 @@ img {
   color: #a66c4b;
 }
 .box {
-  
   /* float: left; */
   transition: 0.5s linear;
   position: relative;
@@ -432,7 +431,7 @@ img {
 
 .box:before {
   position: absolute;
-  content: "";
+  content: '';
   left: 0;
   bottom: 0;
   height: 4px;
@@ -445,7 +444,7 @@ img {
 
 .box:after {
   position: absolute;
-  content: "";
+  content: '';
   top: 0;
   left: 0;
   width: 100%;
@@ -490,10 +489,10 @@ img {
 .AddNewPost {
   font-size: 35px;
   color: #a66c4b;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
 }
 .hashtagsAdded {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   color: #a66c4b;
 }
 .addIMGClass {
@@ -535,4 +534,23 @@ img {
 
 .custum-file-upload input {
   display: none;
+}
+
+.main-profile-data {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.profile {
+  display: flex;
+}
+
+.main-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-post {
+  border: 1px solid black;
 }
