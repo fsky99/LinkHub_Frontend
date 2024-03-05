@@ -69,41 +69,41 @@ const Home = ({ user }) => {
     </div>
   ) : (
     <div className="homePageNLUContainer">
-      <h2 className="HomePageNotLoggedinUserhTwo">Welcome to LinkHub</h2>
-      <p className="HomePageNotLoggedinUserPar">
+      <h2 class="HomePageNotLoggedinUserhTwo">Welcome to LinkHub</h2>
+      <p class="HomePageNotLoggedinUserPar">
         Your go-to destination for social connection and discovery! LinkHub is
         more than just a social media app -<br /> it's your gateway to a vibrant
         community where connections flourish, ideas spark, and conversations
         thrive.
       </p>
 
-      <h3 className="HomePageNotLoggedinUserhThree">At LinkHub, you can:</h3>
-      <ul className="HomePageNotLoggedinUserul">
-        <li className="HomePageNotLoggedinUserli">
-          <strong className="HomePageNotLoggedinUserStrong">Discover:</strong>{' '}
+      <h3 class="HomePageNotLoggedinUserhThree">At LinkHub, you can:</h3>
+      <ul class="HomePageNotLoggedinUserul">
+        <li class="HomePageNotLoggedinUserli">
+          <strong class="HomePageNotLoggedinUserStrong">Discover:</strong>{' '}
           Explore a diverse range of user profiles and interests, and uncover
           new connections that resonate with you.
         </li>
-        <li className="HomePageNotLoggedinUserli">
-          <strong className="HomePageNotLoggedinUserStrong">Connect:</strong> Add
+        <li class="HomePageNotLoggedinUserli">
+          <strong class="HomePageNotLoggedinUserStrong">Connect:</strong> Add
           friends, follow intriguing profiles, and build lasting relationships
           with individuals who share your passions.
         </li>
-        <li className="HomePageNotLoggedinUserli">
-          <strong className="HomePageNotLoggedinUserStrong">Engage:</strong> Share
+        <li class="HomePageNotLoggedinUserli">
+          <strong class="HomePageNotLoggedinUserStrong">Engage:</strong> Share
           your thoughts, experiences, and creativity through posts, comments,
           likes, and replies. Dive into meaningful discussions and connect with
           others who inspire you.
         </li>
       </ul>
 
-      <p className="HomePageNotLoggedinUserPar">
+      <p class="HomePageNotLoggedinUserPar">
         Whether you're looking to stay connected with friends, share your latest
         adventures, or dive into new interests, LinkHub provides a seamless and
         immersive platform to make your social experience truly unforgettable.
       </p>
 
-      <p className="HomePageNotLoggedinUserPar">
+      <p class="HomePageNotLoggedinUserPar">
         Join the LinkHub community today and embark on a journey of connection,
         discovery, and endless possibilities. Sign up now to start exploring the
         power of social connection with LinkHub!
