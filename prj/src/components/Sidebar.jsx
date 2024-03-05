@@ -63,7 +63,7 @@ const Sidebar = ({ users }) => {
                             Visit
                           </button> */}
 
-                          <Link to={`/usersProfile/${usr._id}`}>Visit</Link>
+                          <Link to={`/UsersProfile/${usr._id}`}>Visit</Link>
 
                           {/* <a href={`/usersProfile/${usr._id}`}className="hideHyperlink">    
                             Visit

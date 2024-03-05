@@ -23,15 +23,10 @@ const FollowingPosts = ({ user, users }) => {
 
     if (postToUpdate.data && !postToUpdate.data.like.includes(user.id)) {
       const likePost = { ...postToUpdate.data }
-      //setLikes(likePost.like.length)
-      console.log(likePost)
       likePost.like.push(user.id)
 
-      //setLikes(likePost.like.length)
       await Client.put(`/post/${id}`, { like: likePost.like })
       setIsLike(!isLike)
-      //setLikes(likes + 1)
-      //setPostList(postList)
     } else {
       console.log('already liked the post')
     }
