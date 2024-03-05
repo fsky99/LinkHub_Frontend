@@ -10,7 +10,7 @@ const FollowingPosts = ({ user, users }) => {
   const [likes, setLikes] = useState("")
   const [comments, setComments] = useState(null)
   const [isLike, setIsLike] = useState(false)
-  const [replay , setReplay] = useState(null)
+  const [replay, setReplay] = useState(null)
   const [loggedInUser, setLoggedInUser] = useState(null)
 
   useEffect(() => {
@@ -35,40 +35,72 @@ const FollowingPosts = ({ user, users }) => {
         postId: postId,
       }
       await Client.post(`/comment`, newComment)
-      commentText = ''
+      commentText = ""
     } catch (error) {
       console.error("Error adding comment:", error)
     }
   }
-  const addReplay = async (postId, CommentId , ReplayText) =>{
+  const addReplay = async (postId, CommentId, ReplayText) => {
     try {
-      const postResponse = await Client.get(`/post/${postId}`)
-      const postreturned = postResponse.data
+      // const postResponse = await Client.get(`/post/${postId}`)
+      // const postreturned = postResponse.data
 
-      const commentResponse = await Client.get(`/comment/${CommentId}`)
-      const commentReturned = commentResponse.data
-
+      // const commentResponse = await Client.get(`/comment/${CommentId}`)
+      // const commentReturned = commentResponse.data
 
       const newReplay = {
         reply: ReplayText,
         date: new Date().toISOString(),
         userId: user.id,
         postId: postId,
-        commentId : CommentId,
+        commentId: CommentId,
       }
       await Client.post(`/reply`, newReplay)
       //update the comment to add the replay to it
-
-   
-      
     } catch (error) {
       console.error("Error adding replay:", error)
     }
   }
   let CommentsToShowOnPage = []
-//show the replay 
+  //show the replay
 
+  const ReplayToShowOnPage = []
 
+  const showReplay = async (id) => {
+    const userData = await Client.get(`/user`)
+    let userDataData = userData.data
+    const CommentsToShow = await Client.get(`/comment/${id}`)
+    let CommentsToShows = postToShow.data
+
+    console.log("Users Data:", userDataData)
+    console.log("Comments to show:", CommentsToShow)
+
+    const AllReplays = await Client.get(`/reply`)
+    let ReplayToShow = AllReplays.data
+    console.log("Replies to show:", ReplayToShow)
+    for (let i = 0; i < userDataData.length; i++) {
+      for (let j = 0; j < CommentsToShow.length; j++) {
+        for (let k = 0; k < ReplayToShow.length; k++) {
+          if (userDataData[i]._id === CommentsToShow[j].userId) {
+            if (CommentsToShow[j].reply === ReplayToShow[k]._id) {
+              let ReplayShowing = {
+                ReplayId: ReplayToShow[k]._id,
+                ReplayDate: ReplayToShow[k].date,
+                Replay: ReplayToShow[k].reply,
+                userName: userDataData[i].userName,
+              }
+              ReplayToShowOnPage.push(ReplayShowing)
+            }
+          }
+        }
+      }
+    }
+    setReplay(ReplayToShowOnPage)
+  }
+  const postID = (p) => {
+    return (postId = p)
+  }
+  let postIddd
   const showComments = async (id) => {
     const userData = await Client.get(`/user`)
     let userDataData = userData.data
@@ -86,6 +118,7 @@ const FollowingPosts = ({ user, users }) => {
             if (commetsToshowVar[j].userId === userDataData[k]._id) {
               let commentData = {
                 commentID: commetsToshowVar[j]._id,
+                postIDD: postComments[i].postId,
                 commentDate: commetsToshowVar[j].date,
                 Comment: commetsToshowVar[j].comment,
                 userName: userDataData[k].userName,
@@ -97,6 +130,8 @@ const FollowingPosts = ({ user, users }) => {
     }
 
     setComments(CommentsToShowOnPage)
+    postID(id)
+    postIddd = id
     // console.log("Final comments:", CommentsToShowOnPage)
   }
 
@@ -143,7 +178,6 @@ const FollowingPosts = ({ user, users }) => {
     // console.log("users following  posts:" , usersFollowingPosts)
   }
 
-
   //show the replay and make the user able to add a replay to a comment
   return (
     <div>
@@ -179,7 +213,7 @@ const FollowingPosts = ({ user, users }) => {
                         event.target.elements.commentText.value
                       if (commentText.trim() !== "") {
                         addComment(p._id, commentText)
-                        event.target.elements.commentText.value = ''
+                        event.target.elements.commentText.value = ""
                       }
                     }}
                   >
@@ -207,9 +241,40 @@ const FollowingPosts = ({ user, users }) => {
           ? comments.map((com) => (
               <p key={com.commentID}>
                 {com.userName} :{com.Comment}
+                <form
+                  onSubmit={(event) => {
+                    event.preventDefault()
+                    const replayText = event.target.elements.replayText.value
+                    if (replayText.trim() !== "") {
+                      addReplay(com.postIDD, com.commentID, replayText)
+                      event.target.elements.replayText.value = ""
+                    }
+                  }}
+                >
+                  <input
+                    type="text"
+                    name="replayText"
+                    placeholder="Add Replay"
+                  />
+                  <button id="btn" type="submit">
+                    Add
+                  </button>
+                </form>
+                <button onClick={() => showReplay(com.postIDD)}>
+                    Show Replies
+                  </button>
               </p>
+              
             ))
           : null}
+        {replay ? replay.map((r) =>
+        <div>
+          <p key={r._id}>
+            {r.userName} : {r.Replay}
+          </p>
+           </div>
+        
+        ) : null}
       </div>
     </div>
   )
