@@ -10,7 +10,7 @@ const FollowingPosts = ({ user, users }) => {
   const [likes, setLikes] = useState("")
   const [comments, setComments] = useState(null)
   const [isLike, setIsLike] = useState(false)
-
+  const [replay , setReplay] = useState(null)
   const [loggedInUser, setLoggedInUser] = useState(null)
 
   useEffect(() => {
@@ -40,7 +40,34 @@ const FollowingPosts = ({ user, users }) => {
       console.error("Error adding comment:", error)
     }
   }
+  const addReplay = async (postId, CommentId , ReplayText) =>{
+    try {
+      const postResponse = await Client.get(`/post/${postId}`)
+      const postreturned = postResponse.data
+
+      const commentResponse = await Client.get(`/comment/${CommentId}`)
+      const commentReturned = commentResponse.data
+
+
+      const newReplay = {
+        reply: ReplayText,
+        date: new Date().toISOString(),
+        userId: user.id,
+        postId: postId,
+        commentId : CommentId,
+      }
+      await Client.post(`/reply`, newReplay)
+      //update the comment to add the replay to it
+
+   
+      
+    } catch (error) {
+      console.error("Error adding replay:", error)
+    }
+  }
   let CommentsToShowOnPage = []
+//show the replay 
+
 
   const showComments = async (id) => {
     const userData = await Client.get(`/user`)
@@ -116,6 +143,8 @@ const FollowingPosts = ({ user, users }) => {
     // console.log("users following  posts:" , usersFollowingPosts)
   }
 
+
+  //show the replay and make the user able to add a replay to a comment
   return (
     <div>
       <header>following posts</header>
