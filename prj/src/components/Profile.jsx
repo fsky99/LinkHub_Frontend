@@ -2,6 +2,7 @@ import "../App.css"
 import { useNavigate, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import Client from "../services/api"
 // import { Link } from 'react-router-dom'
 
 const Profile = ({ user }) => {
@@ -11,7 +12,8 @@ const Profile = ({ user }) => {
 
   useEffect(() => {
     findLoggedInUser()
-  }, [profile])
+    
+  }, [user]) 
 
   const findLoggedInUser = async () => {
     const res = await axios.get(`${BASE_URL}/user/${user.id}`)
@@ -19,13 +21,8 @@ const Profile = ({ user }) => {
   }
 
   const deletePost = async (postId) => {
-    const token = localStorage.getItem("token")
 
-    const res = await axios.delete(`${BASE_URL}/post/${postId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    const res = await Client.delete(`${BASE_URL}/post/${postId}`)
   }
 
   const handleCreatePost = async () => {
@@ -43,6 +40,7 @@ const Profile = ({ user }) => {
       <div className="main-profile">
         <div className="main-profile-data">
           <p>userName: {profile.userName}</p>
+          <p>Country: {profile.country}</p>
           {profile.following ? (
             <p>following: {profile.following.length}</p>
           ) : (
