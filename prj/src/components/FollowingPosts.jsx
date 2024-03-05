@@ -6,9 +6,9 @@ import Client from "../services/api"
 const FollowingPosts = ({ user, users }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   const [listUsers, setListUsers] = useState([])
-  const [postList, setPostList] = useState([])
+  const [postList, setPostList] = useState(null)
   const [likes, setLikes] = useState("")
-  const [comments, setComments] = useState("")
+  const [comments, setComments] = useState(null)
   const [isLike, setIsLike] = useState(false)
 
   const [loggedInUser, setLoggedInUser] = useState(null)
@@ -18,9 +18,9 @@ const FollowingPosts = ({ user, users }) => {
     findLoggedInUser()
   }, [isLike])
 
-  const addComment = async (id, commentText) => {
+  const addComment = async (postId, commentText) => {
     try {
-      const postResponse = await Client.get(`/post/${id}`)
+      const postResponse = await Client.get(`/post/${postId}`)
       const postToUpdate = postResponse.data
 
       if (!postToUpdate.comments) {
@@ -32,32 +32,44 @@ const FollowingPosts = ({ user, users }) => {
         comment: commentText,
         date: new Date().toISOString(),
         userId: user.id,
-        postId : id
+        postId: postId,
       }
       await Client.post(`/comment`, newComment)
-
-
-
-      // postToUpdate.comments.push(newComment)
-
-      // const updateResponse = await Client.put(`/post/${id}`, postToUpdate)
-
-      // if (updateResponse.status === 200) {
-      //   setPostList((prevPostList) => {
-      //     return prevPostList.map((post) => {
-      //       if (post._id === id) {
-      //         return {
-      //           ...post,
-      //           comments: postToUpdate.comments,
-      //         }
-      //       }
-      //       return post
-      //     })
-      //   })
-      // }
     } catch (error) {
       console.error("Error adding comment:", error)
     }
+  }
+  let CommentsToShowOnPage = []
+
+  const showComments = async (id) => {
+    const userData = await Client.get(`/user`)
+    let userDataData = userData.data
+    const postToShow = await Client.get(`/post/${id}`)
+    let postComments = postToShow.data.comment
+    console.log("Post comments", postComments)
+    const CommentsToShow = await Client.get(`/comment`)
+    let commetsToshowVar = CommentsToShow.data
+    console.log("Comments to show var : ", commetsToshowVar)
+
+    for (let i = 0; i < postComments.length; i++) {
+      for (let j = 0; j < commetsToshowVar.length; j++) {
+        for (let k = 0; k < userDataData.length; k++) {
+          if (postComments[i]._id === commetsToshowVar[j]._id)
+            if (commetsToshowVar[j].userId === userDataData[k]._id) {
+              let commentData = {
+                commentID: commetsToshowVar[j]._id,
+                commentDate: commetsToshowVar[j].date,
+                Comment: commetsToshowVar[j].comment,
+                userName: userDataData[k].userName,
+              }
+              CommentsToShowOnPage.push(commentData)
+            }
+        }
+      }
+    }
+
+    setComments(CommentsToShowOnPage)
+    console.log("Final comments:", CommentsToShowOnPage)
   }
 
   const handleLikes = async (event, id) => {
@@ -65,15 +77,10 @@ const FollowingPosts = ({ user, users }) => {
 
     if (postToUpdate.data && !postToUpdate.data.like.includes(user.id)) {
       const likePost = { ...postToUpdate.data }
-      //setLikes(likePost.like.length)
-      console.log(likePost)
       likePost.like.push(user.id)
 
-      //setLikes(likePost.like.length)
       await Client.put(`/post/${id}`, { like: likePost.like })
       setIsLike(!isLike)
-      //setLikes(likes + 1)
-      //setPostList(postList)
     } else {
       console.log("already liked the post")
     }
@@ -95,9 +102,11 @@ const FollowingPosts = ({ user, users }) => {
         userData = loggedIndata
       }
     })
-
+    console.log("user foloo", userData.following)
     allUsers.forEach((usr) => {
-      if (usr._id.includes(userData.following)) {
+      console.log("Ff", userData.following)
+      if (userData.following.includes(usr._id)) {
+        console.log("posts here", usr)
         setPostList(usr.posts)
       }
     })
@@ -112,12 +121,12 @@ const FollowingPosts = ({ user, users }) => {
       </aside>
 
       <div className="f-posts">
+        {console.log("posts please", postList)}
         {postList
           ? postList.map((p) => (
               <div key={p._id}>
                 <img src={p.image} />
                 <p>{p.text}</p>
-
                 <button
                   id="btn"
                   type="button"
@@ -147,10 +156,26 @@ const FollowingPosts = ({ user, users }) => {
                     Add
                   </button>
                 </form>
-                {p.comment}
+                {/* {p.comment} */}
+                <br />
+                <button onClick={() => showComments(p._id)}>
+                  Show Comments
+                </button>
+                {/* {showComments(p._id)} */}
+                {console.log(comments)}
+
+               
               </div>
-            ))
+            )
+            )
           : console.log("error")}
+           {comments
+                  ? comments.map((com) => (
+                      <p key={com.commentID}>
+                        {com.userName} :{com.Comment}
+                      </p>
+                    ))
+                  : null}
       </div>
     </div>
   )

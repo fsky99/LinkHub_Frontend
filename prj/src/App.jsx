@@ -13,6 +13,7 @@ import EditProfile from './components/EditProfile'
 import Post from './components/Post'
 import Hashtag from './components/Hashtag'
 import UsersProfile from './components/UsersProfile'
+import EditPost from './components/EditPost'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -53,9 +54,10 @@ function App() {
             element={<FollowingPosts user={user} />}
           />
           <Route
-            path="/usersProfile/:id"
+            path="/UsersProfile/:id"
             element={<UsersProfile user={user} />}
           />
+          <Route path="/EditPost/:id" element={<EditPost user={user} />} />
         </Routes>
         {/* <Hashtag user={user}/> */}
       </main>
