@@ -77,7 +77,7 @@ const EditProfile = ({ user }) => {
         {/* Country Input */}
         <label>
           Country:
-          <input
+          <input 
             type="text"
             value={country}
             onChange={(e) => setCountry(e.target.value)}

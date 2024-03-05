@@ -4,22 +4,34 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 // import { Link } from 'react-router-dom'
 
-const Profile = ({ user }) => {
+const Profile = ({ user  }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   let navigate = useNavigate()
   const [profile, setProfile] = useState({})
 
   useEffect(() => {
-    findLoggedInUser()
-  }, [])
+    findLoggedInUser()  
+  }, []) 
 
   const findLoggedInUser = async () => {
-    console.log('userrrr: ', user)
-    const res = await axios.get(`${BASE_URL}/user/${user.id}`)
-    console.log('response: ', res.data)
+    const res = await axios.get(`${BASE_URL}/user/${user.id}`) 
     setProfile(res.data)
   }
 
+
+  const deletePost = async(postId)=>{
+   
+    const token = localStorage.getItem('token')
+
+    const res = await axios.delete(`${BASE_URL}/post/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }   
+    })       
+      
+        
+  }  
+   
   const handleCreatePost = async () => {
     navigate('/craetePpost')
   }
@@ -47,20 +59,26 @@ const Profile = ({ user }) => {
             <p>followers: 0</p>
           )}
         </div>
-
+ 
         <div className="user-post">
           <div className="user-post-header">
             <button onClick={handleCreatePost}>Create post</button>
-          </div>
+          </div> 
           <p>User posts:</p>
-          {profile.posts
+          {profile.posts 
             ? profile.posts.map((userpost) => (
                 <div key={userpost._id}>
                   <p>{userpost.text}</p>
                   <img src={userpost.image} alt="" />
                   <button>Edit post</button>
-                  <Link to={`/EditPost/${userpost._id}`}>Edit post</Link>
-                  <button>Delete Post</button>
+
+ <Link to={`/EditPost/${userpost._id}`}>Edit post</Link>
+                  <button onClick={()=> deletePost(userpost._id)}>Delete Post</button>
+ 
+
+                 
+                 
+
                   {userpost.like && <p>likes: {userpost.like.length} </p>}
                 </div>
               ))
