@@ -27,12 +27,16 @@ const FollowingPosts = ({ user, users }) => {
         postToUpdate.comments = []
       }
 
+      console.log(postToUpdate.id)
       const newComment = {
         comment: commentText,
         date: new Date().toISOString(),
         userId: user.id,
+        postId : id
       }
       await Client.post(`/comment`, newComment)
+
+
 
       // postToUpdate.comments.push(newComment)
 
