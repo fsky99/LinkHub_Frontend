@@ -53,8 +53,18 @@ const FollowingPosts = ({ user, users }) => {
 
     for (let i = 0; i < postComments.length; i++) {
       for (let j = 0; j < commetsToshowVar.length; j++) {
-        if (postComments[i]._id === commetsToshowVar[j]._id)
-          CommentsToShowOnPage.push(commetsToshowVar[j])
+        for (let k = 0; k < userDataData.length; k++) {
+          if (postComments[i]._id === commetsToshowVar[j]._id)
+            if (commetsToshowVar[j].userId === userDataData[k]._id) {
+              let commentData = {
+                commentID: commetsToshowVar[j]._id,
+                commentDate: commetsToshowVar[j].date,
+                Comment: commetsToshowVar[j].comment,
+                userName: userDataData[k].userName,
+              }
+              CommentsToShowOnPage.push(commentData)
+            }
+        }
       }
     }
     setComments(CommentsToShowOnPage)
@@ -156,7 +166,10 @@ const FollowingPosts = ({ user, users }) => {
                 {console.log(comments)}
                 {comments
                   ? comments.map((com) => (
-                      <p key={com._id}> Comment: {com.comment}</p>
+                      <p key={com.commentID}>
+                         {com.userName} : 
+                          {com.Comment} 
+                         </p>
                     ))
                   : null}
               </div>
