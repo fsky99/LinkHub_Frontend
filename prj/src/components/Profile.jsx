@@ -65,7 +65,6 @@ const Profile = ({ user }) => {
                 <div key={userpost._id}>
                   <p>{userpost.text}</p>
                   <img src={userpost.image} alt="" />
-                  <button>Edit post</button>
 
                   <Link to={`/EditPost/${userpost._id}`}>Edit post</Link>
                   <button onClick={() => deletePost(userpost._id)}>
