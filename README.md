@@ -12,11 +12,11 @@ LinkHub consists of two main repositories:
 
 ## Table of Contents
 
-+ [About the Project](#-About-the-Project)
-+ [Key Features](#-Key-Features)
-+ [Getting Started](#-Getting-Started)
-+ [Tech Stack](#-Tech-Stack)
-+ [Meet the LinkHub Team](#-Meet-the-LinkHub-Team)
++ [About the Project](#about-the-project)
++ [Key Features](#key-features)
++ [Getting Started](#getting-started)
++ [Tech Stack](#tech-stack)
++ [Meet the LinkHub Team](#meet-the-linkHub-team)
 
 
 ## About the Project
