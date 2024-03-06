@@ -476,7 +476,11 @@ img {
   color: #a66c4b;
 }
 
-
+.ContainerEditPRofile{
+  align-items: center;
+  /* display: flex; */
+  text-align: center;
+}
 
 
 .inputClass {
@@ -808,4 +812,9 @@ img {
   box-shadow: #bfbcae 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
+}
+
+.lablesForEditPost{
+  color: #a66c4b;
+  font-family: "Playfair Display", serif;
 }
