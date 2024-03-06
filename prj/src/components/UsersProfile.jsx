@@ -59,27 +59,46 @@ const UsersProfile = ({ user }) => {
     <div>
       {!follow && <button onClick={followUser}>Follow</button>}
 
-      {userProfile ? <p>{userProfile.userName}</p> : <p>Hi</p>}
+      <div className="classUserProfile">
+        {userProfile ? (
+          <div className="usernameProfile">{userProfile.userName}</div>
+        ) : (
+          <p>Hi</p>
+        )}
+        <div className="following-followers">
+          <div className="following">
+            {userProfile ? (
+              <p>following {userProfile.following.length}</p>
+            ) : (
+              <p>following 0</p>
+            )}
+          </div>
+          <div className="followers">
+            {userProfile ? (
+              <p>followers {userProfile.followers.length}</p>
+            ) : (
+              <p>followers 0</p>
+            )}
+          </div>
+        </div>
+      </div>
 
-      {userProfile ? (
-        <p>following: {userProfile.following.length}</p>
-      ) : (
-        <p>following: 0</p>
-      )}
-
-      {userProfile ? (
-        <p>followers: {userProfile.followers.length}</p>
-      ) : (
-        <p>followers: 0</p>
-      )}
-
-      <div>
+      <div className="usersPostsProfile">
         {userProfile
           ? userProfile.posts.map((usrp) => (
-              <div key={usrp._id}>
-                <p>{usrp.text}</p>
-                <img src={usrp.image} alt="" />
-                {usrp.like && <p>likes: {usrp.like.length} </p>}
+              <div key={usrp._id} className="blog-card">
+                <div className="meta">
+                  <img className="photo" src={usrp.image} alt="" />
+                </div>
+                <div className="descriptionProfile">
+                  <div className="textProfile">{usrp.text}</div>
+
+                  {usrp.like && (
+                    <div className="likesProfile">
+                      likes: {usrp.like.length}{' '}
+                    </div>
+                  )}
+                </div>
               </div>
             ))
           : null}
