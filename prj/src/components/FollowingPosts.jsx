@@ -70,7 +70,7 @@ const FollowingPosts = ({ user, users }) => {
     const userData = await Client.get(`/user`)
     let userDataData = userData.data
     const CommentsToShow = await Client.get(`/comment/${id}`)
-    let CommentsToShows = postToShow.data
+    let CommentsToShows = CommentsToShow.data
 
     console.log("Users Data:", userDataData)
     console.log("Comments to show:", CommentsToShow)
