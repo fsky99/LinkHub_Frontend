@@ -1,7 +1,9 @@
-import '../App.css'
-import { useNavigate, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import "../App.css"
+import { useNavigate, Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import axios from "axios"
+import Client from "../services/api"
+// import { Link } from 'react-router-dom'
 
 const Profile = ({ user }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
@@ -10,17 +12,21 @@ const Profile = ({ user }) => {
 
   useEffect(() => {
     findLoggedInUser()
-  }, [])
+    
+  }, [user]) 
 
   const findLoggedInUser = async () => {
-    console.log('userrrr: ', user)
     const res = await axios.get(`${BASE_URL}/user/${user.id}`)
-    console.log('response: ', res.data)
     setProfile(res.data)
   }
 
+  const deletePost = async (postId) => {
+
+    const res = await Client.delete(`${BASE_URL}/post/${postId}`)
+  }
+
   const handleCreatePost = async () => {
-    navigate('/craetePpost')
+    navigate("/craetePpost")
   }
 
   return user ? (
@@ -34,6 +40,7 @@ const Profile = ({ user }) => {
       <div className="main-profile">
         <div className="main-profile-data">
           <p>userName: {profile.userName}</p>
+          <p>Country: {profile.country}</p>
           {profile.following ? (
             <p>following: {profile.following.length}</p>
           ) : (
@@ -58,8 +65,12 @@ const Profile = ({ user }) => {
                   <p>{userpost.text}</p>
                   <img src={userpost.image} alt="" />
                   <button>Edit post</button>
+
                   <Link to={`/EditPost/${userpost._id}`}>Edit post</Link>
-                  <button>Delete Post</button>
+                  <button onClick={() => deletePost(userpost._id)}>
+                    Delete Post
+                  </button>
+
                   {userpost.like && <p>likes: {userpost.like.length} </p>}
                 </div>
               ))
@@ -70,7 +81,7 @@ const Profile = ({ user }) => {
   ) : (
     <div className="protected">
       <h3>Oops! You must be signed in to do that!</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button>
+      <button onClick={() => navigate("/signin")}>Sign In</button>
     </div>
   )
 }
