@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #bfbcae;
+  background-color: #122534;
 }
 
 header {
@@ -8,8 +8,9 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #3b3840;
+  background-color: #d4d5d7;
   height: 80px;
+  color: black;
 }
 
 nav {
@@ -34,12 +35,12 @@ nav > img {
 nav > a {
   font-size: large;
   text-decoration: none;
-  color: white;
+  color: #122534;
   margin-right: 10px;
 }
 
 nav a:hover {
-  color: #bfbcae;
+  color: #64abce;
 }
 
 #sidebar {
@@ -91,13 +92,13 @@ li {
 }
 
 .Hashtags {
-  color: blue;
+  color: #64abce;
   cursor: pointer;
   font-size: 30px;
 }
 .HashtagsChos {
   /* margin-top: 10px; */
-  color: #a66c4b;
+  color: #f1dcc5;
   cursor: grab;
   font-size: 15px;
 }
@@ -119,7 +120,7 @@ li {
   /* margin: 1rem auto; */
   box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.6%;
-  background: #d4d4d4;
+  background: #d4d5d7;
 
   line-height: 1.4;
   font-family: sans-serif;
@@ -201,7 +202,7 @@ img {
 }
 
 .inputSearch {
-  background-color: white;
+  background-color: #ffffff;
   border: none;
   border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -221,20 +222,20 @@ img {
   margin: 7%;
 }
 .HashtagColors {
-  color: blue;
+  color: #64abce;
   cursor: grab;
 }
 .inputSearch:focus {
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .inputSearch:disabled {
-  background-color: white;
+  background-color: #ffffff;
   color: #a3a3a3;
 }
 
 .inputSearch:read-only {
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   color: #a3a3a3;
   cursor: not-allowed;
 }
@@ -244,7 +245,7 @@ img {
 }
 .HeaderH1 {
   font-family: 'Playfair Display', serif;
-  color: #3b3840;
+  color: #f1dcc5;
 }
 .hashtaChosIMG {
   width: 400px;
@@ -252,13 +253,14 @@ img {
 }
 .hashtaChosTXT {
   font-size: 25px;
+  color: #f1dcc5;
 }
 .IMGPOSTHOMEPAGE {
   width: 300px;
   height: 300px;
 }
 .TEXTPOSTHOMEPAGE {
-  color: #a66c4b;
+  color: #f1dcc5;
   font-family: 'Lucida Console', 'Courier New', monospace;
 }
 
@@ -272,10 +274,8 @@ img {
   padding: 50px 40px 20px 40px;
   box-sizing: border-box;
   font-family: sans-serif;
-  color: #f2d4ae;
-  border: 1px solid rgb(219, 219, 219);
+  color: #f1dcc5;
   text-align: center;
-  background: #3b3840;
 }
 
 .content__form {
@@ -291,7 +291,7 @@ img {
 }
 
 .content__form label {
-  border: 1px solid rgb(219, 219, 219);
+  border: 1px solid #bfbcae;
   display: flex;
   align-items: center;
   position: relative;
@@ -400,14 +400,14 @@ img {
 /* Heading Two */
 .HomePageNotLoggedinUserhTwo {
   font-size: 35px;
-  color: #333;
+  color: #baa48d;
   margin-bottom: 20px;
 }
 
 /* Heading Three */
 .HomePageNotLoggedinUserhThree {
   font-size: 22px;
-  color: #555;
+  color: #f1dcc5;
   margin-top: 20px;
 }
 .homePageNLUContainer {
@@ -417,7 +417,7 @@ img {
 .HomePageNotLoggedinUserPar {
   font-family: 'Georgia', serif;
   font-size: 25px;
-  color: #3b3840;
+  color: #6e6254;
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -450,7 +450,7 @@ img {
 }
 
 .HomePageNotLoggedinUserPar a:hover {
-  color: #0056b3;
+  color: #64abce;
 }
 
 .inputClass2 {
@@ -461,7 +461,7 @@ img {
   margin-left: 55px;
   border-bottom: 2px solid #3b3840;
   caret-color: #3b3840;
-  background-color: #bfbcae;
+  background-color: #d4d5d7;
   padding: 5px;
   transition: 0.5s linear;
   font-family: monospace;
@@ -469,14 +469,14 @@ img {
 }
 
 .inputClass2:focus {
-  border: 2px solid #a66c4b;
-  caret-color: #a66c4b;
+  border: 2px solid #f1dcc5;
+  caret-color: #f1dcc5;
   color: #3b3840;
   box-shadow: 4px 4px 10px #f2d4ae;
 }
 
 .inputClass2:focus::placeholder {
-  color: #a66c4b;
+  color: #f1dcc5;
 }
 
 .ContainerEditPRofile {
@@ -492,7 +492,7 @@ img {
   outline: none;
   border-bottom: 2px solid #3b3840;
   caret-color: #3b3840;
-  background-color: #bfbcae;
+  background-color: #d4d5d7;
   padding: 5px;
   transition: 0.5s linear;
   font-family: monospace;
@@ -500,14 +500,14 @@ img {
 }
 
 .inputClass:focus {
-  border: 2px solid #a66c4b;
-  caret-color: #a66c4b;
+  border: 2px solid #f1dcc5;
+  caret-color: #f1dcc5;
   color: #3b3840;
   box-shadow: 4px 4px 10px #f2d4ae;
 }
 
 .inputClass:focus::placeholder {
-  color: #a66c4b;
+  color: #f1dcc5;
 }
 .box {
   /* float: left; */
@@ -550,25 +550,25 @@ img {
 }
 
 .box:hover {
-  box-shadow: 0 5px 15px #a66c4b;
+  box-shadow: 0 5px 15px #f1dcc5;
 }
 
 .box:hover:before {
-  border-color: #a66c4b;
+  border-color: #f1dcc5;
   height: 100%;
   transform: translateX(0);
   transition: 0.3s transform linear, 0.3s height linear 0.3s;
 }
 
 .box:hover:after {
-  border-color: #a66c4b;
+  border-color: #f1dcc5;
   height: 100%;
   transform: translateX(0);
   transition: 0.3s transform linear, 0.3s height linear 0.5s;
 }
 
 .buttonsCreatePost {
-  color: #a66c4b;
+  color: #f1dcc5;
   text-decoration: none;
   cursor: pointer;
   outline: none;
@@ -582,15 +582,15 @@ img {
 }
 .AddNewPost {
   font-size: 35px;
-  color: #a66c4b;
+  color: #f1dcc5;
   font-family: 'Playfair Display', serif;
 }
 .hashtagsAdded {
   font-family: 'Playfair Display', serif;
-  color: #a66c4b;
+  color: #f1dcc5;
 }
 .addIMGClass {
-  color: #a66c4b;
+  color: #f1dcc5;
 }
 .custum-file-upload {
   display: inline-block;
@@ -598,7 +598,7 @@ img {
   align-items: center;
   justify-content: center;
   border: 2px dashed #3b3840;
-  background-color: #bfbcae;
+  background-color: #d4d5d7;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0px 48px 35px -48px #3b3840;
@@ -637,6 +637,8 @@ img {
 }
 .profile {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-profile {
@@ -659,7 +661,7 @@ img {
 
 .usernameProfile {
   padding: 2%;
-  background-color: white;
+  background-color: #bfbcae;
   box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
@@ -676,13 +678,18 @@ img {
   margin-left: -2%;
   padding: 0 18px;
   margin-top: -10%;
+  color: #64abce;
+}
+
+.editChangeColor {
+  color: #64abce;
 }
 
 .following,
 .followers {
   margin-left: 50px;
   padding: 1%;
-  background-color: white;
+  background-color: #bfbcae;
   width: 100%;
   text-align: center;
   box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
@@ -707,13 +714,13 @@ img {
   margin: 1rem auto;
   box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.6%;
-  background: white;
+  background: #d4d5d7;
   line-height: 1.4;
   font-family: sans-serif;
   border-radius: 5px;
   overflow: hidden;
   z-index: 0;
-  width: 60%;
+  width: 61%;
 }
 
 .meta {
@@ -735,7 +742,7 @@ img {
 
 .descriptionProfile {
   padding: 1rem;
-  background-color: white;
+  background-color: #d4d5d7;
   position: relative;
   z-index: 1;
   flex: 0 0 55%;
@@ -846,10 +853,11 @@ img {
 }
 
 .card-name {
+  color: white;
   display: flex;
   flex-direction: row;
   box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
-  background: white;
+  background: #d4d5d7;
   line-height: 1.4;
   font-family: sans-serif;
   border-radius: 5px;
@@ -1038,7 +1046,7 @@ menu {
 }
 
 .lablesForEditPost {
-  color: #a66c4b;
+  color: #f1dcc5;
   font-family: 'Playfair Display', serif;
 }
 
@@ -1048,4 +1056,17 @@ menu {
   flex-direction: row;
   height: 100%;
   width: 24%;
+}
+
+.followLink {
+  color: black;
+  cursor: pointer;
+}
+
+.followLink:hover {
+  color: #64abce;
+}
+
+h1 {
+  color: #f1dcc5;
 }

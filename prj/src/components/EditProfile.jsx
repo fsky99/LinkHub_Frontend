@@ -63,7 +63,7 @@ const EditProfile = ({ user }) => {
       <form onSubmit={handleSubmit}>
         {/* Email Input */}
         <label className="lablesForEditPost">
-          Email
+          Email{' '}
           <input
             type="email"
             className="inputClass"
@@ -78,7 +78,7 @@ const EditProfile = ({ user }) => {
         <br />
         {/* Name Input */}
         <label className="lablesForEditPost">
-          Name
+          Name{'   '}
           <input
             className="inputClass"
             type="text"
@@ -92,7 +92,7 @@ const EditProfile = ({ user }) => {
         <br />
         {/* Country Input */}
         <label className="lablesForEditPost">
-          Country
+          Country{'  '}
           <input
             type="text"
             className="inputClass"

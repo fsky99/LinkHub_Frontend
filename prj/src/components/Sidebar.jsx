@@ -60,7 +60,10 @@ const Sidebar = ({ users }) => {
                           <a href="#" className="hideHyperlink">
                             {usr.userName}
                           </a>
-                          <Link to={`/UsersProfile/${usr._id}`}>
+                          <Link
+                            className="followLink"
+                            to={`/UsersProfile/${usr._id}`}
+                          >
                             <ArrowForwardIcon />
                           </Link>
                         </div>

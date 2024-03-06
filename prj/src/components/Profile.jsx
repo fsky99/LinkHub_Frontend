@@ -78,7 +78,10 @@ const Profile = ({ user }) => {
                     <img className="photo" src={userpost.image} alt="" />
                   </div>
                   <div className="descriptionProfile">
-                    <Link to={`/EditPost/${userpost._id}`}>
+                    <Link
+                      className="editChangeColor"
+                      to={`/EditPost/${userpost._id}`}
+                    >
                       <EditNoteIcon />
                     </Link>
 
