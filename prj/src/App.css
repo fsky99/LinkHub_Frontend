@@ -126,6 +126,7 @@ img {
   flex: 1;
   display: flex;
   flex-direction: column;
+  margin-left: 5%;
 }
 
 .innerContentRow {
@@ -143,7 +144,7 @@ img {
 }
 
 .inputSearch {
-  background-color: #bfbcae;
+  background-color: white;
   border: none;
   border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -160,14 +161,15 @@ img {
   -moz-appearance: none;
   appearance: none;
   transition: background-color 0.3s ease-in-out;
+  margin: 7%;
 }
 
 .inputSearch:focus {
-  background-color: #bfbcae;
+  background-color: white;
 }
 
 .inputSearch:disabled {
-  background-color: #dadada;
+  background-color: white;
   color: #a3a3a3;
 }
 
@@ -734,4 +736,29 @@ img {
   display: flex;
   justify-content: space-between;
   margin-top: auto;
+}
+
+.card-name {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+  background: white;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  padding: 3%;
+  margin: 2% 8%;
+  justify-content: space-between;
+}
+
+menu {
+  padding: 0 !important;
+}
+
+.userSidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

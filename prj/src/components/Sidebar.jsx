@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import UsersProfile from './UsersProfile'
-
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import SearchIcon from '@mui/icons-material/Search'
 const Sidebar = ({ users }) => {
   let navigate = useNavigate()
   const BASE_URL = import.meta.env.VITE_BASE_URL
@@ -43,31 +44,25 @@ const Sidebar = ({ users }) => {
                 className="inputSearch"
                 id="search"
                 onChange={handleChange}
-                placeholder="Search"
+                placeholder="Search "
               />
             </div>
           </div>
           <menu>
-            <div>
+            <div className="userSidebar">
               {users
                 ? users.map(
                     (usr) =>
                       usr.userName
                         .toLowerCase()
                         .includes(searchUsers.toLowerCase()) && (
-                        <div key={usr._id}>
+                        <div key={usr._id} className="card-name">
                           <a href="#" className="hideHyperlink">
                             {usr.userName}
                           </a>
-                          {/* <button onClick={(e) => { handleClick(e, usr._id) }}>
-                            Visit
-                          </button> */}
-
-                          <Link to={`/UsersProfile/${usr._id}`}>Visit</Link>
-
-                          {/* <a href={`/usersProfile/${usr._id}`}className="hideHyperlink">    
-                            Visit
-                          </a> */}
+                          <Link to={`/UsersProfile/${usr._id}`}>
+                            <ArrowForwardIcon />
+                          </Link>
                         </div>
                       )
                   )
