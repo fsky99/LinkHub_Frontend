@@ -47,7 +47,6 @@ nav a:hover {
   height: 100vh;
 
   transition: all 0.3s;
-  overflow-y: scroll;
 }
 
 #sidebarComp {
@@ -643,6 +642,8 @@ img {
 .textProfile {
   position: relative;
   margin: 1rem 0 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .likesProfile {
@@ -711,4 +712,26 @@ img {
   top: -45%;
   background-color: #39bda7;
   transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.card-button {
+  width: 24%;
+  height: 29px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.primary {
+  background-color: rgb(255, 114, 109);
+  color: white;
+}
+.primary:hover {
+  background-color: rgb(255, 73, 66);
+}
+
+.card-footerProfile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
 }

@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Client from '../services/api'
+import EditNoteIcon from '@mui/icons-material/EditNote'
 // import { Link } from 'react-router-dom'
 
 const Profile = ({ user }) => {
@@ -26,10 +27,6 @@ const Profile = ({ user }) => {
     setDeleted(true)
   }
 
-  const handleCreatePost = async () => {
-    navigate('/craetePpost')
-  }
-
   return user ? (
     <div className="profile">
       <nav id="sidebar">
@@ -38,40 +35,62 @@ const Profile = ({ user }) => {
           <Link to="/edit">Edit Profile</Link>
         </div>
       </nav>
-      <div className="main-profile">
-        <div className="main-profile-data">
-          <p>userName: {profile.userName}</p>
-          <p>Country: {profile.country}</p>
-          {profile.following ? (
-            <p>following: {profile.following.length}</p>
-          ) : (
-            <p>following: 0</p>
-          )}
 
-          {profile.followers ? (
-            <p>followers: {profile.followers.length}</p>
-          ) : (
-            <p>followers: 0</p>
-          )}
+      <div>
+        <div className="classUserProfile">
+          {profile ? (
+            <div className="usernameProfile">{profile.userName}</div>
+          ) : null}
+          {/* <p>userName: {profile.userName}</p> */}
+          {/* <p>Country: {profile.country}</p> */}
+          <div className="following-followers">
+            <div className="following">
+              {profile.following ? (
+                <p>following: {profile.following.length}</p>
+              ) : (
+                <p>following: 0</p>
+              )}
+            </div>
+
+            <div className="followers">
+              {profile.followers ? (
+                <p>followers: {profile.followers.length}</p>
+              ) : (
+                <p>followers: 0</p>
+              )}
+            </div>
+          </div>
         </div>
 
-        <div className="user-post">
-          <div className="user-post-header">
-            <button onClick={handleCreatePost}>Create post</button>
-          </div>
-          <p>User posts:</p>
+        <div className="usersPostsProfile">
+          <h1>My Post</h1>
           {profile.posts
             ? profile.posts.map((userpost) => (
-                <div key={userpost._id}>
-                  <p>{userpost.text}</p>
-                  <img src={userpost.image} alt="" />
+                <div key={userpost._id} className="blog-card">
+                  <div className="meta">
+                    <img className="photo" src={userpost.image} alt="" />
+                  </div>
+                  <div className="descriptionProfile">
+                    <Link to={`/EditPost/${userpost._id}`}>
+                      <EditNoteIcon />
+                    </Link>
 
-                  <Link to={`/EditPost/${userpost._id}`}>Edit post</Link>
-                  <button onClick={() => deletePost(userpost._id)}>
-                    Delete Post
-                  </button>
+                    <div className="textProfile">{userpost.text}</div>
 
-                  {userpost.like && <p>likes: {userpost.like.length} </p>}
+                    <div className="card-footerProfile">
+                      {userpost.like && (
+                        <div className="likesProfile">
+                          likes: {userpost.like.length}{' '}
+                        </div>
+                      )}
+                      <button
+                        className="card-button primary"
+                        onClick={() => deletePost(userpost._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
                 </div>
               ))
             : null}
