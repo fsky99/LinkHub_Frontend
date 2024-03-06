@@ -1,19 +1,20 @@
-import "../App.css"
-import { useNavigate, Link } from "react-router-dom"
-import { useState, useEffect } from "react"
-import axios from "axios"
-import Client from "../services/api"
+import '../App.css'
+import { useNavigate, Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import Client from '../services/api'
 // import { Link } from 'react-router-dom'
 
 const Profile = ({ user }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   let navigate = useNavigate()
   const [profile, setProfile] = useState({})
+  const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
     findLoggedInUser()
-    
-  }, [user]) 
+    setDeleted(false)
+  }, [deleted])
 
   const findLoggedInUser = async () => {
     const res = await axios.get(`${BASE_URL}/user/${user.id}`)
@@ -21,12 +22,12 @@ const Profile = ({ user }) => {
   }
 
   const deletePost = async (postId) => {
-
     const res = await Client.delete(`${BASE_URL}/post/${postId}`)
+    setDeleted(true)
   }
 
   const handleCreatePost = async () => {
-    navigate("/craetePpost")
+    navigate('/craetePpost')
   }
 
   return user ? (
@@ -81,7 +82,7 @@ const Profile = ({ user }) => {
   ) : (
     <div className="protected">
       <h3>Oops! You must be signed in to do that!</h3>
-      <button onClick={() => navigate("/signin")}>Sign In</button>
+      <button onClick={() => navigate('/signin')}>Sign In</button>
     </div>
   )
 }
