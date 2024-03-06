@@ -1,13 +1,13 @@
 // EditProfile.js
 
-import React, { useEffect, useState } from "react"
-import axios from "axios"
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const EditProfile = ({ user }) => {
   // State variables to store user input
-  const [name, setName] = useState("")
-  const [country, setCountry] = useState("")
-  const [email, setEmail] = useState("")
+  const [name, setName] = useState('')
+  const [country, setCountry] = useState('')
+  const [email, setEmail] = useState('')
   // console.log("userr:",user);
   var BASE_URL = import.meta.env.VITE_BASE_URL
 
@@ -21,7 +21,7 @@ const EditProfile = ({ user }) => {
     setName(res.data.userName)
     setEmail(res.data.email)
     setCountry(res.data.country)
-    console.log("profile:", profile)
+    console.log('profile:', profile)
   }
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const EditProfile = ({ user }) => {
     // console.log(profile);
   }, [user?.id])
 
-  console.log("user33", user)
+  console.log('user33', user)
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -38,7 +38,7 @@ const EditProfile = ({ user }) => {
       let updatedUser = {
         userName: name,
         country: country,
-        email: email,
+        email: email
       }
 
       const response = await axios.put(
@@ -47,10 +47,10 @@ const EditProfile = ({ user }) => {
       )
 
       if (response.status === 200) {
-        alert("Your profile has been successfully edited!")
+        alert('Your profile has been successfully edited!')
         // window.location.reload()
       } else {
-        throw new Error("Something went wrong! Please try again later.")
+        throw new Error('Something went wrong! Please try again later.')
       }
     } catch (err) {
       console.error(err.message)
@@ -61,9 +61,24 @@ const EditProfile = ({ user }) => {
     <div className="ContainerEditPRofile">
       <h1 className="AddNewPost">Edit Profile</h1>
       <form onSubmit={handleSubmit}>
+        {/* Email Input */}
+        <label className="lablesForEditPost">
+          Email
+          <input
+            type="email"
+            className="inputClass"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={email}
+            disabled
+          />
+        </label>
+        <br />
+        <br />
+        <br />
         {/* Name Input */}
         <label className="lablesForEditPost">
-          Name 
+          Name
           <input
             className="inputClass"
             type="text"
@@ -86,21 +101,7 @@ const EditProfile = ({ user }) => {
             placeholder={country}
           />
         </label>
-        <br />
-        <br />
-        <br />
-        {/* Email Input */}
-        <label className="lablesForEditPost">
-          Email
-          <input
-            type="email"
-            className="inputClass"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder={email}
-            disabled
-          />
-        </label>
+
         <br />
         <br />
         <br />
