@@ -101,11 +101,8 @@ const FollowingPosts = ({ user, users }) => {
         userData = loggedIndata
       }
     })
-    console.log('user foloo', userData.following)
     allUsers.forEach((usr) => {
-      console.log('Ff', userData.following)
       if (userData.following.includes(usr._id)) {
-        console.log('posts here', usr)
         setPostList(usr.posts)
       }
     })
