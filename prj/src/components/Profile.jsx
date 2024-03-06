@@ -1,10 +1,9 @@
-import '../App.css'
-import { useNavigate, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import Client from '../services/api'
-import EditNoteIcon from '@mui/icons-material/EditNote'
-// import { Link } from 'react-router-dom'
+import "../App.css"
+import { useNavigate, Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import axios from "axios"
+import Client from "../services/api"
+import EditNoteIcon from "@mui/icons-material/EditNote"
 
 const Profile = ({ user }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
@@ -29,12 +28,6 @@ const Profile = ({ user }) => {
 
   return user ? (
     <div className="profile">
-      {/* <nav id="sidebar">
-        <div className="sidebar-header">
-          <Link to="/edit">Edit Profile</Link>
-        </div>
-      </nav> */}
-
       <div>
         <div className="classUserProfile profileHeader">
           <div className="usertopPart">
@@ -48,8 +41,6 @@ const Profile = ({ user }) => {
             </Link>
           </div>
 
-          {/* <p>userName: {profile.userName}</p> */}
-          {/* <p>Country: {profile.country}</p> */}
           <div className="following-followers">
             <div className="following">
               {profile.following ? (
@@ -90,7 +81,7 @@ const Profile = ({ user }) => {
                     <div className="card-footerProfile">
                       {userpost.like && (
                         <div className="likesProfile">
-                          likes: {userpost.like.length}{' '}
+                          likes: {userpost.like.length}{" "}
                         </div>
                       )}
                       <button
@@ -110,7 +101,7 @@ const Profile = ({ user }) => {
   ) : (
     <div className="protected">
       <h3>Oops! You must be signed in to do that!</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button>
+      <button onClick={() => navigate("/signin")}>Sign In</button>
     </div>
   )
 }
