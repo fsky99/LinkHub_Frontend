@@ -47,7 +47,6 @@ nav a:hover {
   height: 100vh;
 
   transition: all 0.3s;
-  overflow-y: scroll;
 }
 
 #sidebarComp {
@@ -181,6 +180,7 @@ img {
   flex: 1;
   display: flex;
   flex-direction: column;
+  margin-left: 5%;
 }
 
 .innerContentRow {
@@ -198,7 +198,7 @@ img {
 }
 
 .inputSearch {
-  background-color: #bfbcae;
+  background-color: white;
   border: none;
   border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -215,17 +215,18 @@ img {
   -moz-appearance: none;
   appearance: none;
   transition: background-color 0.3s ease-in-out;
+  margin: 7%;
 }
 .HashtagColors {
   color: blue;
   cursor: grab;
 }
 .inputSearch:focus {
-  background-color: #bfbcae;
+  background-color: white;
 }
 
 .inputSearch:disabled {
-  background-color: #dadada;
+  background-color: white;
   color: #a3a3a3;
 }
 
@@ -645,6 +646,213 @@ img {
 
 .user-post {
   border: 1px solid black;
+}
+
+.classUserProfile {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.usernameProfile {
+  padding: 2.5%;
+  background-color: white;
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.following,
+.followers {
+  margin-left: 50px;
+  padding: 1%;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.following-followers {
+  display: flex;
+  flex-direction: row;
+}
+
+.usersPostsProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem auto;
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.6%;
+  background: white;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  width: 60%;
+}
+
+.meta {
+  z-index: 0;
+  flex: 0 0 40%;
+  height: auto;
+}
+
+.photo {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.descriptionProfile {
+  padding: 1rem;
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .userProfileDetails {
+  display: flex;
+  flex-direction: row;
+} */
+
+.textProfile {
+  position: relative;
+  margin: 1rem 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.likesProfile {
+  text-align: end;
+  color: red;
+  margin-top: auto;
+  padding: 0;
+}
+
+.followbutton {
+  display: inline-block;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 19px;
+  cursor: pointer;
+  color: black;
+  z-index: 1;
+}
+
+.followbutton:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: white;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.followbutton:after {
+  content: '';
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #39bda7;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.followbutton:hover {
+  color: #ffffff;
+  border: 1px solid #39bda7;
+}
+
+.followbutton:hover:before {
+  top: -35%;
+  background-color: #39bda7;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.followbutton:hover:after {
+  top: -45%;
+  background-color: #39bda7;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.card-button {
+  width: 24%;
+  height: 29px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.primary {
+  background-color: rgb(255, 114, 109);
+  color: white;
+}
+.primary:hover {
+  background-color: rgb(255, 73, 66);
+}
+
+.card-footerProfile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.card-name {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+  background: white;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  padding: 3%;
+  margin: 2% 8%;
+  justify-content: space-between;
+}
+
+menu {
+  padding: 0 !important;
+}
+
+.userSidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* like button  */
