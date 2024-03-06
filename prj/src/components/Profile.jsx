@@ -29,18 +29,25 @@ const Profile = ({ user }) => {
 
   return user ? (
     <div className="profile">
-      <nav id="sidebar">
+      {/* <nav id="sidebar">
         <div className="sidebar-header">
-          {/* <a href="#">Edit Profile</a> */}
           <Link to="/edit">Edit Profile</Link>
         </div>
-      </nav>
+      </nav> */}
 
       <div>
-        <div className="classUserProfile">
-          {profile ? (
-            <div className="usernameProfile">{profile.userName}</div>
-          ) : null}
+        <div className="classUserProfile profileHeader">
+          <div className="usertopPart">
+            {profile ? (
+              <div className="usernameProfile userClass">
+                {profile.userName}
+              </div>
+            ) : null}
+            <Link className="editLink" to="/edit">
+              <EditNoteIcon />
+            </Link>
+          </div>
+
           {/* <p>userName: {profile.userName}</p> */}
           {/* <p>Country: {profile.country}</p> */}
           <div className="following-followers">
