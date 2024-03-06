@@ -165,6 +165,7 @@ const FollowingPosts = ({ user, users }) => {
         userData = loggedIndata
       }
     })
+
     // console.log("user foloo", userData.following)
     allUsers.forEach((usr) => {
       // console.log("Ff", userData.following)
