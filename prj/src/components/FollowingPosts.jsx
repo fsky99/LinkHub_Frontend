@@ -187,133 +187,149 @@ const FollowingPosts = ({ user, users }) => {
 
   return (
     <div className="postDIV">
-      <header>following posts</header>
+      <div className="sideBarClass">
+        <aside>
+          <Sidebar users={loggedInUser} />
+        </aside>
+      </div>
+      <div className="contentClass">
+        <div className="f-posts">
+          {postList
+            ? postList.map((postss) =>
+                postss.map((p) => (
+                  <div key={p._id} className="post-block">
+                    <img src={p.image} className="post-image" />
+                    <div className="post-content">
+                      <p>{p.text}</p>
 
-      <aside>
-        <Sidebar users={loggedInUser} />
-      </aside>
+                      <label className="likescontainer">
+                        <input
+                          type="checkbox"
+                          id="btn"
+                          onClick={(event) => {
+                            handleLikes(event, p._id)
+                          }}
+                        />
+                        <svg
+                          id="Layer_1"
+                          version="1.0"
+                          viewBox="0 0 24 24"
+                          xml:space="preserve"
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                        >
+                          <path d="M16.4,4C14.6,4,13,4.9,12,6.3C11,4.9,9.4,4,7.6,4C4.5,4,2,6.5,2,9.6C2,14,12,22,12,22s10-8,10-12.4C22,6.5,19.5,4,16.4,4z"></path>
+                        </svg>
+                      </label>
 
-      <div className="f-posts">
-        {postList
-          ? postList.map((postss) =>
-              postss.map((p) => (
-                <div key={p._id}>
-                  <img src={p.image} />
-                  <p>{p.text}</p>
-                  <button
-                    id="btn"
-                    type="button"
-                    onClick={(event) => {
-                      handleLikes(event, p._id)
-                    }}
-                  >
-                    LIKE
-                  </button>
-                  {p.like && <p>likes: {p.like.length} </p>}
-                  <h4>comments:</h4>
-                  <form
-                    onSubmit={(event) => {
-                      event.preventDefault()
-                      const commentText =
-                        event.target.elements.commentText.value
-                      if (commentText.trim() !== "") {
-                        addComment(p._id, commentText)
-                        event.target.elements.commentText.value = ""
-                      }
-                    }}
-                  >
-                    <input
-                      type="text"
-                      name="commentText"
-                      placeholder="Add Comment"
-                    />
-                    <button id="btn" type="submit">
-                      Add
-                    </button>
-                  </form>
-                  {/* {p.comment} */}
-                  <br />
-                  <button onClick={() => showComments(p._id)}>
-                    Show Comments
-                  </button>
-                  {/* {showComments(p._id)} */}
-                </div>
-              ))
-            )
-          : console.log("error")}
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={{ ...style, overflowY: "scroll", maxHeight: "70vh" }}>
-            {" "}
-            {/* Add maxHeight */}
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Comments
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              {comments
-                ? comments.map((com) => (
-                    <p key={com.commentID}>
-                      {com.userName} :{com.Comment}
+                      {p.like && <p>likes: {p.like.length} </p>}
+                      <h4>comments:</h4>
                       <form
                         onSubmit={(event) => {
                           event.preventDefault()
-                          const replayText =
-                            event.target.elements.replayText.value
-                          if (replayText.trim() !== "") {
-                            addReplay(com.postingId, com.commentID, replayText)
-                            event.target.elements.replayText.value = ""
+                          const commentText =
+                            event.target.elements.commentText.value
+                          if (commentText.trim() !== "") {
+                            addComment(p._id, commentText)
+                            event.target.elements.commentText.value = ""
                           }
                         }}
                       >
                         <input
                           type="text"
-                          name="replayText"
-                          placeholder="Add Replay"
+                          name="commentText"
+                          placeholder="Add Comment"
                         />
                         <button id="btn" type="submit">
                           Add
                         </button>
                       </form>
-                      <button onClick={() => showReplay(com.commentID)}>
-                        Show Replies
+                      {/* {p.comment} */}
+                      <br />
+                      <button onClick={() => showComments(p._id)}>
+                        Show Comments
                       </button>
-                    </p>
-                  ))
-                : null}
-            </Typography>
-          </Box>
-        </Modal>
+                      {/* {showComments(p._id)} */}
+                    </div>
+                  </div>
+                ))
+              )
+            : console.log("error")}
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={{ ...style, overflowY: "scroll", maxHeight: "70vh" }}>
+              {" "}
+              {/* Add maxHeight */}
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                Comments
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                {comments
+                  ? comments.map((com) => (
+                      <p key={com.commentID}>
+                        {com.userName} :{com.Comment}
+                        <form
+                          onSubmit={(event) => {
+                            event.preventDefault()
+                            const replayText =
+                              event.target.elements.replayText.value
+                            if (replayText.trim() !== "") {
+                              addReplay(
+                                com.postingId,
+                                com.commentID,
+                                replayText
+                              )
+                              event.target.elements.replayText.value = ""
+                            }
+                          }}
+                        >
+                          <input
+                            type="text"
+                            name="replayText"
+                            placeholder="Add Replay"
+                          />
+                          <button id="btn" type="submit">
+                            Add
+                          </button>
+                        </form>
+                        <button onClick={() => showReplay(com.commentID)}>
+                          Show Replies
+                        </button>
+                      </p>
+                    ))
+                  : null}
+              </Typography>
+            </Box>
+          </Modal>
 
-
-        <Modal
-        open={openReplies}
-        onClose={handleCloseReplies}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            replies
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          {replay
-          ? replay.map((r) => (
-              <div>
-                <p key={r._id}>
-                  {r.userName} : {r.Replay}
-                </p>
-              </div>
-            ))
-          : null}
-          </Typography>
-        </Box>
-      </Modal>
-
-       
+          <Modal
+            open={openReplies}
+            onClose={handleCloseReplies}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                replies
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                {replay
+                  ? replay.map((r) => (
+                      <div>
+                        <p key={r._id}>
+                          {r.userName} : {r.Replay}
+                        </p>
+                      </div>
+                    ))
+                  : null}
+              </Typography>
+            </Box>
+          </Modal>
+        </div>
       </div>
     </div>
   )

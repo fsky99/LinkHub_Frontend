@@ -14,7 +14,7 @@ header {
 
 nav {
   font-size: 25px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   display: flex;
   justify-content: space-around;
   padding: 8px;
@@ -80,9 +80,9 @@ li {
   padding: 10px 50px 10px 70px;
 }
 
-.bottom-padding {
+/* .bottom-padding {
   height: 100px;
-}
+} */
 
 .nano {
   position: relative;
@@ -102,13 +102,50 @@ li {
   cursor: grab;
   font-size: 15px;
 }
-.postDIV{
-  display: block;
+.postDIV {
+  display: flex;
+  flex-direction: row;
 }
 .f-posts {
-  display: flex;
-  
+  display: block;
+  margin-left: 70px;
+  margin-top: 100px;
   justify-content: center;
+}
+.post-block {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.post-image {
+  width: 200px;
+  height: 200px;
+}
+
+.post-content {
+  flex: 3;
+  padding: 0 20px;
+}
+
+.post-content p {
+  margin-bottom: 10px;
+}
+
+.post-content button {
+  margin-bottom: 10px;
+}
+
+.post-content form {
+  margin-bottom: 10px;
+}
+
+.post-content button,
+.post-content form {
+  display: inline-block;
+}
+
+.post-content h4 {
+  margin-bottom: 10px;
 }
 
 img {
@@ -122,7 +159,7 @@ img {
 
 .sideBarClass {
   width: 250px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   /* background-color: green; */
 }
 
@@ -152,7 +189,7 @@ img {
   border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   color: #333;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 16px;
   padding: 10px;
   width: 100%;
@@ -185,7 +222,7 @@ img {
   text-decoration: none;
 }
 .HeaderH1 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   color: #3b3840;
 }
 .hashtaChosIMG {
@@ -201,7 +238,7 @@ img {
 }
 .TEXTPOSTHOMEPAGE {
   color: #a66c4b;
-  font-family: 'Lucida Console', 'Courier New', monospace;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 /* register page css  */
@@ -336,7 +373,7 @@ img {
   opacity: 0.7;
 }
 .RegisterHeader {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Heading Two */
@@ -357,7 +394,7 @@ img {
 }
 /* Paragraph */
 .HomePageNotLoggedinUserPar {
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 25px;
   color: #3b3840;
   line-height: 1.6;
@@ -375,7 +412,7 @@ img {
 /* List Item */
 .HomePageNotLoggedinUserli {
   margin-bottom: 10px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 20px;
   color: #444;
 }
@@ -434,7 +471,7 @@ img {
 
 .box:before {
   position: absolute;
-  content: '';
+  content: "";
   left: 0;
   bottom: 0;
   height: 4px;
@@ -447,7 +484,7 @@ img {
 
 .box:after {
   position: absolute;
-  content: '';
+  content: "";
   top: 0;
   left: 0;
   width: 100%;
@@ -492,10 +529,10 @@ img {
 .AddNewPost {
   font-size: 35px;
   color: #a66c4b;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 .hashtagsAdded {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   color: #a66c4b;
 }
 .addIMGClass {
@@ -556,4 +593,38 @@ img {
 
 .user-post {
   border: 1px solid black;
+}
+
+/* like button  */
+.likescontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.likescontainer {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.likescontainer svg {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  transition: all 0.3s;
+  fill: #666;
+}
+
+.likescontainer svg:hover {
+  transform: scale(1.1);
+}
+
+.likescontainer input:checked ~ svg {
+  fill: #e3474f;
 }
