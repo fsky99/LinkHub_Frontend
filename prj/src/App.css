@@ -115,11 +115,24 @@ li {
 .post-block {
   display: flex;
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  /* margin: 1rem auto; */
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.6%;
+  background: #d4d4d4;
+
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  width: 60%;
 }
 
 .post-image {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
 }
 
 .post-content {
@@ -129,6 +142,7 @@ li {
 
 .post-content p {
   margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
 }
 
 .post-content button {
@@ -202,7 +216,10 @@ img {
   appearance: none;
   transition: background-color 0.3s ease-in-out;
 }
-
+.HashtagColors {
+  color: blue;
+  cursor: grab;
+}
 .inputSearch:focus {
   background-color: #bfbcae;
 }
@@ -615,8 +632,8 @@ img {
   position: relative;
   top: 0;
   left: 0;
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   transition: all 0.3s;
   fill: #666;
 }
@@ -626,5 +643,138 @@ img {
 }
 
 .likescontainer input:checked ~ svg {
-  fill: #e3474f;
+  fill: #d70808;
+}
+/* inputs for comments and replays */
+.inputBox {
+  position: relative;
+}
+
+.inputBox input {
+  padding: 15px 20px;
+  outline: none;
+  background: transparent;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid #3b3840;
+  font-size: 1em;
+}
+
+.inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 15px 20px;
+  pointer-events: none;
+  font-size: 1em;
+  transition: 0.4s cubic-bezier(0.05, 0.81, 0, 0.93);
+  color: #3b3840;
+  letter-spacing: 0.1em;
+}
+
+.inputBox input:focus ~ span,
+.inputBox input:valid ~ span {
+  font-size: 0.7em;
+  transform: translateX(14px) translateY(-7.5px);
+  padding: 0 5px;
+  border-radius: 2px;
+  background: #bfbcae;
+  letter-spacing: 0em;
+  border: 1px solid #bfbcae;
+}
+#bottone6 {
+  margin-left: 20px;
+  align-items: center;
+  background-color: #bfbcae;
+  border: #bfbcae;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  /* line-height: 1.25; */
+  /* min-height: 3rem; */
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 200px;
+  height: 5px;
+}
+
+#bottone6:hover,
+#bottone6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+#bottone6:hover {
+  transform: translateY(-1px);
+}
+
+#bottone6:active {
+  background-color: #bfbcae;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+#bottone5 {
+  align-items: center;
+  background-color: #bfbcae;
+  border: #bfbcae;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  /* line-height: 1.25;
+  min-height: 3rem; */
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 20px;
+  height: 10px;
+}
+.divButtonss {
+  margin-top: 5px;
+}
+
+#bottone5:hover,
+#bottone5:focus {
+  border-color: #bfbcae;
+  box-shadow: #bfbcae;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+#bottone5:hover {
+  transform: translateY(-1px);
+}
+
+#bottone5:active {
+  background-color: #f0f0f1;
+  border-color: #bfbcae;
+  box-shadow: #bfbcae 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
 }

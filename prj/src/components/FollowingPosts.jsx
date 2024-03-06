@@ -13,7 +13,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
+  bgcolor: "#d4d4d4",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
@@ -201,6 +201,11 @@ const FollowingPosts = ({ user, users }) => {
                     <img src={p.image} className="post-image" />
                     <div className="post-content">
                       <p>{p.text}</p>
+                      {p.hashtag
+                        ? p.hashtag.map((hash) => (
+                            <div className="HashtagColors">#{hash}</div>
+                          ))
+                        : null}
 
                       <label className="likescontainer">
                         <input
@@ -223,7 +228,6 @@ const FollowingPosts = ({ user, users }) => {
                       </label>
 
                       {p.like && <p>likes: {p.like.length} </p>}
-                      <h4>comments:</h4>
                       <form
                         onSubmit={(event) => {
                           event.preventDefault()
@@ -235,20 +239,21 @@ const FollowingPosts = ({ user, users }) => {
                           }
                         }}
                       >
-                        <input
-                          type="text"
-                          name="commentText"
-                          placeholder="Add Comment"
-                        />
-                        <button id="btn" type="submit">
-                          Add
-                        </button>
+                        <div class="inputBox">
+                          <input type="text" name="commentText" required="" />
+                          <span>Add Comment</span> {""}
+                          {""}
+                          <button id="bottone5" type="submit">
+                            +
+                          </button>
+                        </div>
                       </form>
                       {/* {p.comment} */}
                       <br />
-                      <button onClick={() => showComments(p._id)}>
+                      <button id="bottone6" onClick={() => showComments(p._id)}>
                         Show Comments
                       </button>
+
                       {/* {showComments(p._id)} */}
                     </div>
                   </div>
@@ -287,16 +292,21 @@ const FollowingPosts = ({ user, users }) => {
                             }
                           }}
                         >
-                          <input
-                            type="text"
-                            name="replayText"
-                            placeholder="Add Replay"
-                          />
-                          <button id="btn" type="submit">
-                            Add
-                          </button>
+                          <br />
+                          <div class="inputBox">
+                            <input required="" type="text" name="replayText" />
+                            <span>Add Replay</span> {""}
+                            {""}
+                            <button id="bottone5" type="submit">
+                              +
+                            </button>
+                          </div>
                         </form>
-                        <button onClick={() => showReplay(com.commentID)}>
+                        <button
+                          className="divButtonss"
+                          id="bottone6"
+                          onClick={() => showReplay(com.commentID)}
+                        >
                           Show Replies
                         </button>
                       </p>
