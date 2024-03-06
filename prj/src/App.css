@@ -448,6 +448,37 @@ img {
 .HomePageNotLoggedinUserPar a:hover {
   color: #0056b3;
 }
+
+
+.inputClass2 {
+  max-width: 190px;
+  height: 30px;
+  border: 2px solid transparent;
+  outline: none;
+  margin-left: 55px;
+  border-bottom: 2px solid #3b3840;
+  caret-color: #3b3840;
+  background-color: #bfbcae;
+  padding: 5px;
+  transition: 0.5s linear;
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+
+.inputClass2:focus {
+  border: 2px solid #a66c4b;
+  caret-color: #a66c4b;
+  color: #3b3840;
+  box-shadow: 4px 4px 10px #f2d4ae;
+}
+
+.inputClass2:focus::placeholder {
+  color: #a66c4b;
+}
+
+
+
+
 .inputClass {
   max-width: 190px;
   height: 30px;
