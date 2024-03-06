@@ -102,9 +102,12 @@ li {
   cursor: grab;
   font-size: 15px;
 }
-
+.postDIV{
+  display: block;
+}
 .f-posts {
   display: flex;
+  
   justify-content: center;
 }
 

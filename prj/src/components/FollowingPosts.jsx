@@ -1,17 +1,37 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import Sidebar from './Sidebar'
-import Client from '../services/api'
+import { useState, useEffect } from "react"
+import axios from "axios"
+import Sidebar from "./Sidebar"
+import Client from "../services/api"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Typography from "@mui/material/Typography"
+import Modal from "@mui/material/Modal"
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+}
 const FollowingPosts = ({ user, users }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   const [listUsers, setListUsers] = useState([])
   const [postList, setPostList] = useState(null)
-  const [likes, setLikes] = useState('')
+  const [likes, setLikes] = useState("")
   const [comments, setComments] = useState(null)
   const [isLike, setIsLike] = useState(false)
   const [replay, setReplay] = useState(null)
   const [loggedInUser, setLoggedInUser] = useState(null)
+  const [open, setOpen] = useState(false)
+  const [openReplies, setOpendReplies] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
+  const handleCloseReplies = () => setOpendReplies(false)
 
   useEffect(() => {
     getFollowingPosts()
@@ -31,12 +51,12 @@ const FollowingPosts = ({ user, users }) => {
         comment: commentText,
         date: new Date().toISOString(),
         userId: user.id,
-        postId: postId
+        postId: postId,
       }
       await Client.post(`/comment`, newComment)
-      commentText = ''
+      commentText = ""
     } catch (error) {
-      console.error('Error adding comment:', error)
+      console.error("Error adding comment:", error)
     }
   }
   const addReplay = async (postId, CommentId, ReplayText) => {
@@ -46,11 +66,11 @@ const FollowingPosts = ({ user, users }) => {
         date: new Date().toISOString(),
         userId: user.id,
         postId: postId,
-        commentId: CommentId
+        commentId: CommentId,
       }
       await Client.post(`/reply`, newReplay)
     } catch (error) {
-      console.error('Error adding replay:', error)
+      console.error("Error adding replay:", error)
     }
   }
   let CommentsToShowOnPage = []
@@ -77,7 +97,7 @@ const FollowingPosts = ({ user, users }) => {
                 ReplayId: ReplayToShow[k]._id,
                 ReplayDate: ReplayToShow[k].date,
                 Replay: ReplayToShow[k].reply,
-                userName: userDataData[i].userName
+                userName: userDataData[i].userName,
               }
               ReplayToShowOnPage.push(ReplayShowing)
             }
@@ -86,6 +106,7 @@ const FollowingPosts = ({ user, users }) => {
       }
     }
     setReplay(ReplayToShowOnPage)
+    setOpendReplies(true)
   }
   const postID = (p) => {
     return (postId = p)
@@ -111,14 +132,14 @@ const FollowingPosts = ({ user, users }) => {
                 postingId: postToShow.data._id,
                 commentDate: commetsToshowVar[j].date,
                 Comment: commetsToshowVar[j].comment,
-                userName: userDataData[k].userName
+                userName: userDataData[k].userName,
               }
               CommentsToShowOnPage.push(commentData)
             }
         }
       }
     }
-
+    setOpen(true)
     setComments(CommentsToShowOnPage)
     postID(id)
     postIddd = id
@@ -134,7 +155,7 @@ const FollowingPosts = ({ user, users }) => {
       await Client.put(`/post/${id}`, { like: likePost.like })
       setIsLike(!isLike)
     } else {
-      console.log('already liked the post')
+      console.log("already liked the post")
     }
   }
 
@@ -164,9 +185,8 @@ const FollowingPosts = ({ user, users }) => {
     setPostList(usersFollowingPosts)
   }
 
-  //show the replay and make the user able to add a replay to a comment
   return (
-    <div>
+    <div className="postDIV">
       <header>following posts</header>
 
       <aside>
@@ -196,9 +216,9 @@ const FollowingPosts = ({ user, users }) => {
                       event.preventDefault()
                       const commentText =
                         event.target.elements.commentText.value
-                      if (commentText.trim() !== '') {
+                      if (commentText.trim() !== "") {
                         addComment(p._id, commentText)
-                        event.target.elements.commentText.value = ''
+                        event.target.elements.commentText.value = ""
                       }
                     }}
                   >
@@ -220,38 +240,67 @@ const FollowingPosts = ({ user, users }) => {
                 </div>
               ))
             )
-          : console.log('error')}
-        {comments
-          ? comments.map((com) => (
-              <p key={com.commentID}>
-                {com.userName} :{com.Comment}
-                <form
-                  onSubmit={(event) => {
-                    event.preventDefault()
-                    const replayText = event.target.elements.replayText.value
-                    if (replayText.trim() !== '') {
-                      addReplay(com.postingId, com.commentID, replayText)
-                      event.target.elements.replayText.value = ''
-                    }
-                  }}
-                >
-                  <input
-                    type="text"
-                    name="replayText"
-                    placeholder="Add Replay"
-                  />
-                  <button id="btn" type="submit">
-                    Add
-                  </button>
-                </form>
-                <button onClick={() => showReplay(com.commentID)}>
-                  Show Replies
-                </button>
-              </p>
-            ))
-          : null}
+          : console.log("error")}
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={{ ...style, overflowY: "scroll", maxHeight: "70vh" }}>
+            {" "}
+            {/* Add maxHeight */}
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Comments
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              {comments
+                ? comments.map((com) => (
+                    <p key={com.commentID}>
+                      {com.userName} :{com.Comment}
+                      <form
+                        onSubmit={(event) => {
+                          event.preventDefault()
+                          const replayText =
+                            event.target.elements.replayText.value
+                          if (replayText.trim() !== "") {
+                            addReplay(com.postingId, com.commentID, replayText)
+                            event.target.elements.replayText.value = ""
+                          }
+                        }}
+                      >
+                        <input
+                          type="text"
+                          name="replayText"
+                          placeholder="Add Replay"
+                        />
+                        <button id="btn" type="submit">
+                          Add
+                        </button>
+                      </form>
+                      <button onClick={() => showReplay(com.commentID)}>
+                        Show Replies
+                      </button>
+                    </p>
+                  ))
+                : null}
+            </Typography>
+          </Box>
+        </Modal>
 
-        {replay
+
+        <Modal
+        open={openReplies}
+        onClose={handleCloseReplies}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            replies
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          {replay
           ? replay.map((r) => (
               <div>
                 <p key={r._id}>
@@ -260,6 +309,11 @@ const FollowingPosts = ({ user, users }) => {
               </div>
             ))
           : null}
+          </Typography>
+        </Box>
+      </Modal>
+
+       
       </div>
     </div>
   )
