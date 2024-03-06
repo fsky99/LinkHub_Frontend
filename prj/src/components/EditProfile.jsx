@@ -8,28 +8,24 @@ const EditProfile = ({ user }) => {
   const [name, setName] = useState('')
   const [country, setCountry] = useState('')
   const [email, setEmail] = useState('')
-  // console.log("userr:",user);
+  
   var BASE_URL = import.meta.env.VITE_BASE_URL
 
   const [profile, setProfile] = useState([])
 
   const findLoggedUser = async () => {
     const res = await axios.get(`${BASE_URL}/user/${user.id}`)
-    // setProfile(res.data)
-    // console.log(res.data);
+    
     setProfile(res.data)
     setName(res.data.userName)
     setEmail(res.data.email)
     setCountry(res.data.country)
-    console.log('profile:', profile)
   }
 
   useEffect(() => {
     findLoggedUser()
-    // console.log(profile);
   }, [user?.id])
 
-  console.log('user33', user)
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault()

@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import UsersProfile from './UsersProfile'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import SearchIcon from '@mui/icons-material/Search'
+import { useState, useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
+import UsersProfile from "./UsersProfile"
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
+import SearchIcon from "@mui/icons-material/Search"
 const Sidebar = ({ users }) => {
   let navigate = useNavigate()
   const BASE_URL = import.meta.env.VITE_BASE_URL
   const [listUsers, setListUsers] = useState([])
-  const [searchUsers, setSearchUsers] = useState('')
+  const [searchUsers, setSearchUsers] = useState("")
 
   const [loggedInUser, setLoggedInUser] = useState(null)
   const [selectedUser, setSelectedUser] = useState(null)
@@ -22,7 +22,7 @@ const Sidebar = ({ users }) => {
     setListUsers(response.data)
   }
   const handleChange = (e) => {
-    if (e.target.name === 'search') {
+    if (e.target.name === "search") {
       setSearchUsers(e.target.value)
     }
   }
@@ -72,7 +72,6 @@ const Sidebar = ({ users }) => {
                 : null}
             </div>
           </menu>
-          {/* {selectedUser && <UsersProfile userId={selectedUser} />} */}
 
           <div className="bottom-padding"></div>
         </div>

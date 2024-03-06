@@ -14,7 +14,7 @@ const Home = ({ user }) => {
     const fetchPosts = async () => {
       try {
         const response = await Client.get('/post')
-        console.log('posts returned' + response.data)
+      
         setPosts(response.data)
       } catch (error) {
         console.error('Error fetching posts:', error)

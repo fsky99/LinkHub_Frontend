@@ -1,7 +1,7 @@
-import '../App.css'
-import { useNavigate, useParams, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import "../App.css"
+import { useNavigate, useParams, Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import axios from "axios"
 
 const UsersProfile = ({ user }) => {
   let { id } = useParams()
@@ -17,20 +17,16 @@ const UsersProfile = ({ user }) => {
   }, [follow])
 
   const finduser = async () => {
-    console.log('props:', user)
     const res = await axios.get(`${BASE_URL}/user/${id}`)
     setUserProfile(res.data)
-    console.log('userDatafrom:', res)
   }
   const findFollowing = async () => {
-    const res = await axios.get(`${BASE_URL}/user/${user.id}`) //get the data of the logged in user
+    const res = await axios.get(`${BASE_URL}/user/${user.id}`)
     setLoggedInData(res.data)
-    console.log('followings:: ', res.data.following) //get the following of logged in user
 
     if (res.data.following) {
       res.data.following.forEach((fData) => {
         if (fData._id == id) {
-          console.log('no')
           setFollow(true)
         }
       })
@@ -43,14 +39,14 @@ const UsersProfile = ({ user }) => {
     followingList.following.push(id)
 
     const res = await axios.put(`${BASE_URL}/user/${user.id}`, {
-      following: followingList.following
+      following: followingList.following,
     })
 
     const followUpdated = await axios.get(`${BASE_URL}/user/${id}`)
     const followData = { ...followUpdated.data }
     followData.followers.push(user.id)
     const followRes = await axios.put(`${BASE_URL}/user/${id}`, {
-      followers: followData.followers
+      followers: followData.followers,
     })
     setFollow(!follow)
   }
@@ -100,7 +96,7 @@ const UsersProfile = ({ user }) => {
 
                   {usrp.like && (
                     <div className="likesProfile">
-                      likes: {usrp.like.length}{' '}
+                      likes: {usrp.like.length}{" "}
                     </div>
                   )}
                 </div>
