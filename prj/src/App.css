@@ -14,7 +14,7 @@ header {
 
 nav {
   font-size: 25px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   justify-content: space-around;
   padding: 8px;
@@ -126,7 +126,7 @@ li {
   border-radius: 5px;
   overflow: hidden;
   z-index: 0;
-  width: 60%;
+  width: 88%;
 }
 
 .post-image {
@@ -141,7 +141,7 @@ li {
 
 .post-content p {
   margin-bottom: 10px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .post-content button {
@@ -172,7 +172,7 @@ img {
 
 .sideBarClass {
   width: 250px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   /* background-color: green; */
 }
 
@@ -180,6 +180,9 @@ img {
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.homeClass {
   margin-left: 5%;
 }
 
@@ -203,7 +206,7 @@ img {
   border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   color: #333;
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: 'Helvetica Neue', sans-serif;
   font-size: 16px;
   padding: 10px;
   width: 100%;
@@ -240,7 +243,7 @@ img {
   text-decoration: none;
 }
 .HeaderH1 {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   color: #3b3840;
 }
 .hashtaChosIMG {
@@ -256,7 +259,7 @@ img {
 }
 .TEXTPOSTHOMEPAGE {
   color: #a66c4b;
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Lucida Console', 'Courier New', monospace;
 }
 
 /* register page css  */
@@ -391,7 +394,7 @@ img {
   opacity: 0.7;
 }
 .RegisterHeader {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Heading Two */
@@ -412,7 +415,7 @@ img {
 }
 /* Paragraph */
 .HomePageNotLoggedinUserPar {
-  font-family: "Georgia", serif;
+  font-family: 'Georgia', serif;
   font-size: 25px;
   color: #3b3840;
   line-height: 1.6;
@@ -430,7 +433,7 @@ img {
 /* List Item */
 .HomePageNotLoggedinUserli {
   margin-bottom: 10px;
-  font-family: "Georgia", serif;
+  font-family: 'Georgia', serif;
   font-size: 20px;
   color: #444;
 }
@@ -449,7 +452,6 @@ img {
 .HomePageNotLoggedinUserPar a:hover {
   color: #0056b3;
 }
-
 
 .inputClass2 {
   max-width: 190px;
@@ -477,12 +479,11 @@ img {
   color: #a66c4b;
 }
 
-.ContainerEditPRofile{
+.ContainerEditPRofile {
   align-items: center;
   /* display: flex; */
   text-align: center;
 }
-
 
 .inputClass {
   max-width: 190px;
@@ -524,7 +525,7 @@ img {
 
 .box:before {
   position: absolute;
-  content: "";
+  content: '';
   left: 0;
   bottom: 0;
   height: 4px;
@@ -537,7 +538,7 @@ img {
 
 .box:after {
   position: absolute;
-  content: "";
+  content: '';
   top: 0;
   left: 0;
   width: 100%;
@@ -582,10 +583,10 @@ img {
 .AddNewPost {
   font-size: 35px;
   color: #a66c4b;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
 }
 .hashtagsAdded {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   color: #a66c4b;
 }
 .addIMGClass {
@@ -657,10 +658,24 @@ img {
 }
 
 .usernameProfile {
-  padding: 2.5%;
+  padding: 2%;
   background-color: white;
   box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+
+.userClass {
+  padding: 8.5%;
+}
+
+.profileHeader {
+  margin: 0 6%;
+}
+
+.editLink {
+  margin-left: -2%;
+  padding: 0 18px;
+  margin-top: -10%;
 }
 
 .following,
@@ -935,7 +950,7 @@ menu {
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+  font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica,
     Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -982,7 +997,7 @@ menu {
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+  font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica,
     Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -1022,7 +1037,15 @@ menu {
   transform: translateY(0);
 }
 
-.lablesForEditPost{
+.lablesForEditPost {
   color: #a66c4b;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
+}
+
+.usertopPart {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  width: 24%;
 }

@@ -44,7 +44,7 @@ const Home = ({ user }) => {
       <div className="sideBarClass">
         <Sidebar users={listUsers} />
       </div>
-      <div className="contentClass">
+      <div className="contentClass homeClass">
         <div className="innerContentRow">
           <div className="hashtagsClass">
             <Hashtag user={user} />
