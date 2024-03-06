@@ -87,11 +87,10 @@ const FollowingPosts = ({ user, users }) => {
 
     const AllReplays = await Client.get(`/reply`)
     let ReplayToShow = AllReplays.data
-
     for (let i = 0; i < userDataData.length; i++) {
       for (let j = 0; j < CommentsToShows.reply.length; j++) {
         for (let k = 0; k < ReplayToShow.length; k++) {
-          if (userDataData[i]._id === CommentsToShows.userId._id) {
+          if (userDataData[i]._id === ReplayToShow[k].userId) {
             if (CommentsToShows.reply[j]._id === ReplayToShow[k]._id) {
               let ReplayShowing = {
                 ReplayId: ReplayToShow[k]._id,
