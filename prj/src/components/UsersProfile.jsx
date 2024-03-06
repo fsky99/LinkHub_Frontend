@@ -57,14 +57,19 @@ const UsersProfile = ({ user }) => {
 
   return (
     <div>
-      {!follow && <button onClick={followUser}>Follow</button>}
-
       <div className="classUserProfile">
         {userProfile ? (
           <div className="usernameProfile">{userProfile.userName}</div>
         ) : (
           <p>Hi</p>
         )}
+
+        {!follow && (
+          <button className="followbutton" onClick={followUser}>
+            Follow
+          </button>
+        )}
+
         <div className="following-followers">
           <div className="following">
             {userProfile ? (
