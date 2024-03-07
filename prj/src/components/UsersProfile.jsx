@@ -1,7 +1,7 @@
-import "../App.css"
-import { useNavigate, useParams, Link } from "react-router-dom"
-import { useState, useEffect } from "react"
-import axios from "axios"
+import '../App.css'
+import { useNavigate, useParams, Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const UsersProfile = ({ user }) => {
   let { id } = useParams()
@@ -39,14 +39,14 @@ const UsersProfile = ({ user }) => {
     followingList.following.push(id)
 
     const res = await axios.put(`${BASE_URL}/user/${user.id}`, {
-      following: followingList.following,
+      following: followingList.following
     })
 
     const followUpdated = await axios.get(`${BASE_URL}/user/${id}`)
     const followData = { ...followUpdated.data }
     followData.followers.push(user.id)
     const followRes = await axios.put(`${BASE_URL}/user/${id}`, {
-      followers: followData.followers,
+      followers: followData.followers
     })
     setFollow(!follow)
   }
@@ -55,28 +55,34 @@ const UsersProfile = ({ user }) => {
     <div>
       <div className="classUserProfile">
         {userProfile ? (
-          <div className="usernameProfile">{userProfile.userName}</div>
+          <div className="usernameProfile">
+            <b>{userProfile.userName}</b>
+          </div>
         ) : (
           <p>Hi</p>
         )}
 
         {!follow && (
           <button className="followbutton" onClick={followUser}>
-            Follow
+            <b>Follow</b>
           </button>
         )}
 
         <div className="following-followers">
           <div className="following">
             {userProfile ? (
-              <p>following {userProfile.following.length}</p>
+              <p>
+                <b>Following</b> {userProfile.following.length}
+              </p>
             ) : (
               <p>following 0</p>
             )}
           </div>
           <div className="followers">
             {userProfile ? (
-              <p>followers {userProfile.followers.length}</p>
+              <p>
+                <b>Followers</b> {userProfile.followers.length}
+              </p>
             ) : (
               <p>followers 0</p>
             )}
@@ -96,7 +102,7 @@ const UsersProfile = ({ user }) => {
 
                   {usrp.like && (
                     <div className="likesProfile">
-                      likes: {usrp.like.length}{" "}
+                      likes: {usrp.like.length}{' '}
                     </div>
                   )}
                 </div>
