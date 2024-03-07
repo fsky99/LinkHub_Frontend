@@ -690,6 +690,11 @@ img {
   margin: 0 6%;
 }
 
+.countryDisplay {
+  margin: 0px;
+  color: #64abce;
+}
+
 .editLink {
   margin-left: -2%;
   padding: 0 18px;

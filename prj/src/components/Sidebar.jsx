@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import axios from "axios"
-import UsersProfile from "./UsersProfile"
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
-import SearchIcon from "@mui/icons-material/Search"
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import UsersProfile from './UsersProfile'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import SearchIcon from '@mui/icons-material/Search'
 const Sidebar = ({ users }) => {
   let navigate = useNavigate()
   const BASE_URL = import.meta.env.VITE_BASE_URL
   const [listUsers, setListUsers] = useState([])
-  const [searchUsers, setSearchUsers] = useState("")
+  const [searchUsers, setSearchUsers] = useState('')
 
   const [loggedInUser, setLoggedInUser] = useState(null)
   const [selectedUser, setSelectedUser] = useState(null)
@@ -22,12 +22,11 @@ const Sidebar = ({ users }) => {
     setListUsers(response.data)
   }
   const handleChange = (e) => {
-    if (e.target.name === "search") {
+    if (e.target.name === 'search') {
       setSearchUsers(e.target.value)
     }
   }
 
-  let button
   const handleClick = (e, id) => {
     setSelectedUser(id)
   }
@@ -53,13 +52,20 @@ const Sidebar = ({ users }) => {
               {users
                 ? users.map(
                     (usr) =>
-                      usr.userName
+                      (usr.userName
                         .toLowerCase()
-                        .includes(searchUsers.toLowerCase()) && (
+                        .includes(searchUsers.toLowerCase()) ||
+                        usr.country
+                          .toLowerCase()
+                          .includes(searchUsers.toLowerCase())) && (
                         <div key={usr._id} className="card-name">
-                          <a href="#" className="hideHyperlink">
-                            {usr.userName}
-                          </a>
+                          <div>
+                            <a href="#" className="hideHyperlink">
+                              {usr.userName}
+                            </a>
+                            <p className="countryDisplay">{usr.country}</p>
+                          </div>
+
                           <Link
                             className="followLink"
                             to={`/UsersProfile/${usr._id}`}
