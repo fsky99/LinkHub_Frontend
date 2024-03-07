@@ -40,7 +40,7 @@ Welcome to LinkHub! We're excited to have you join our community of passionate t
 
 Create your LinkHub account to unlock all the features and connect with the community, and you're ready to embark on a journey of exploration.
 
-3. Explore the Platform:
+2. Explore the Platform:
  
 ![Image](https://i.ibb.co/CBVVTcB/image-6.png)
 
@@ -48,6 +48,7 @@ Create your LinkHub account to unlock all the features and connect with the comm
 - Follow: Connect with fellow travelers by following their profiles. Stay updated with their latest adventures and recommendations.
 
 3. Share Your Travel Stories:
+
 ![Image](https://i.ibb.co/njZ3qR1/image-5.png)
 
 - Upload Pictures: Share the magic of your favorite destinations by uploading pictures. Whether it's a breathtaking sunset or a cozy cafe, your visuals will inspire and connect with others.
@@ -55,6 +56,8 @@ Create your LinkHub account to unlock all the features and connect with the comm
 - Engage in Discussions: Join discussions on posts that resonate with you. Whether you want to share your own experiences or seek advice for your next trip, our comment section is the place for lively conversations.
 
 4. Connect with the Community:
+
+
 ![Image](https://i.ibb.co/z7WyVSc/image-3.png)
 
 - Follow and be Followed: Build connections by following other users and gaining followers. Engage with the community through likes, comments, and shared experiences.
