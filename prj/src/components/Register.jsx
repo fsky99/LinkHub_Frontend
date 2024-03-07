@@ -6,11 +6,11 @@ const Register = () => {
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
-    userName: "",
-    country: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    userName: '',
+    country: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   })
 
   const handleChange = (e) => {
@@ -20,18 +20,18 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await RegisterUser({
-
       userName: formValues.userName,
       country: formValues.country,
       email: formValues.email,
       password: formValues.password
+      // country: formValues.country
     })
     setFormValues({
-      userName: "",
-      country: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      userName: '',
+      country: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
     })
 
     navigate('/signin')
