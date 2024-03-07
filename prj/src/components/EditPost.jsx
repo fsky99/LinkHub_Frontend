@@ -1,7 +1,7 @@
-import '../App.css'
-import { useNavigate, useParams, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import Client from '../services/api'
+import "../App.css"
+import { useNavigate, useParams, Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import Client from "../services/api"
 
 const EditPost = ({ user }) => {
   let { id } = useParams()
@@ -11,8 +11,8 @@ const EditPost = ({ user }) => {
   }, [])
 
   const [postData, setPostData] = useState({
-    text: '',
-    hashtag: []
+    text: "",
+    hashtag: [],
   })
   const [input, setInput] = useState()
 
@@ -29,7 +29,7 @@ const EditPost = ({ user }) => {
     e.preventDefault()
     const response = await Client.put(`/post/${id}`, {
       text: postData.text,
-      hashtag: postData.hashtag
+      hashtag: postData.hashtag,
     })
   }
 
@@ -41,15 +41,13 @@ const EditPost = ({ user }) => {
   const addHashtags = () => {
     const newHash = { ...postData, hashtag: [...postData.hashtag, input] }
     setPostData(newHash)
-    console.log('hash', newHash)
-    setInput(' ')
+    setInput(" ")
   }
 
   const removeHashtag = (index) => {
     let list = [...postData.hashtag]
-    console.log('list of hashtag', list)
     list.splice(index, 1)
-    console.log('after splice', list)
+
     const afterRemoveHash = { ...postData, hashtag: list }
     setPostData(afterRemoveHash)
   }
@@ -57,7 +55,7 @@ const EditPost = ({ user }) => {
   return (
     <div className="CraetePostDiv">
       <h1 className="AddNewPost">Edit Post</h1>
-      {console.log('text', postData.text)}
+
       <input
         placeholder="Add Text"
         className="inputClass"
@@ -67,10 +65,11 @@ const EditPost = ({ user }) => {
         value={postData.text}
         id="text"
       />
-
+      <br />
+      <br />
       <input
         placeholder="Add #"
-        className="inputClass"
+        className="inputClass2"
         name="hashtag"
         id="hashtag"
         value={input}
@@ -85,27 +84,30 @@ const EditPost = ({ user }) => {
 
       <h3 className="hashtagsAdded">
         Hashtags:
-        {console.log('please', postData.hashtag)}
         {postData
           ? postData.hashtag.map((hash, index) => (
               <div key={index}>
-                {' '}
+                {" "}
                 <h4>
-                  #{hash}{' '}
+                  #{hash}{" "}
                   <button
                     className="buttonsCreatePost"
                     onClick={() => removeHashtag(index)}
                   >
                     <span className="box 3">X</span>
-                  </button>{' '}
+                  </button>{" "}
                 </h4>
               </div>
             ))
           : null}
       </h3>
 
-      <button type="submit" onClick={handleSubmit}>
-        Submit
+      <button
+        className="buttonsCreatePost"
+        type="submit"
+        onClick={handleSubmit}
+      >
+        <span className="box">Submit</span>
       </button>
     </div>
   )

@@ -17,20 +17,16 @@ const UsersProfile = ({ user }) => {
   }, [follow])
 
   const finduser = async () => {
-    console.log('props:', user)
     const res = await axios.get(`${BASE_URL}/user/${id}`)
     setUserProfile(res.data)
-    console.log('userDatafrom:', res)
   }
   const findFollowing = async () => {
-    const res = await axios.get(`${BASE_URL}/user/${user.id}`) //get the data of the logged in user
+    const res = await axios.get(`${BASE_URL}/user/${user.id}`)
     setLoggedInData(res.data)
-    console.log('followings:: ', res.data.following) //get the following of logged in user
 
     if (res.data.following) {
       res.data.following.forEach((fData) => {
         if (fData._id == id) {
-          console.log('no')
           setFollow(true)
         }
       })
@@ -57,29 +53,59 @@ const UsersProfile = ({ user }) => {
 
   return (
     <div>
-      {!follow && <button onClick={followUser}>Follow</button>}
+      <div className="classUserProfile">
+        {userProfile ? (
+          <div className="usernameProfile">
+            <b>{userProfile.userName}</b>
+          </div>
+        ) : (
+          <p>Hi</p>
+        )}
 
-      {userProfile ? <p>{userProfile.userName}</p> : <p>Hi</p>}
+        {!follow && (
+          <button className="followbutton" onClick={followUser}>
+            <b>Follow</b>
+          </button>
+        )}
 
-      {userProfile ? (
-        <p>following: {userProfile.following.length}</p>
-      ) : (
-        <p>following: 0</p>
-      )}
+        <div className="following-followers">
+          <div className="following">
+            {userProfile ? (
+              <p>
+                <b>Following</b> {userProfile.following.length}
+              </p>
+            ) : (
+              <p>following 0</p>
+            )}
+          </div>
+          <div className="followers">
+            {userProfile ? (
+              <p>
+                <b>Followers</b> {userProfile.followers.length}
+              </p>
+            ) : (
+              <p>followers 0</p>
+            )}
+          </div>
+        </div>
+      </div>
 
-      {userProfile ? (
-        <p>followers: {userProfile.followers.length}</p>
-      ) : (
-        <p>followers: 0</p>
-      )}
-
-      <div>
+      <div className="usersPostsProfile">
         {userProfile
           ? userProfile.posts.map((usrp) => (
-              <div key={usrp._id}>
-                <p>{usrp.text}</p>
-                <img src={usrp.image} alt="" />
-                {usrp.like && <p>likes: {usrp.like.length} </p>}
+              <div key={usrp._id} className="blog-card">
+                <div className="meta">
+                  <img className="photo" src={usrp.image} alt="" />
+                </div>
+                <div className="descriptionProfile">
+                  <div className="textProfile">{usrp.text}</div>
+
+                  {usrp.like && (
+                    <div className="likesProfile">
+                      likes: {usrp.like.length}{' '}
+                    </div>
+                  )}
+                </div>
               </div>
             ))
           : null}
