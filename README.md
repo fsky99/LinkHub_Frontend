@@ -53,15 +53,14 @@ Create your LinkHub account to unlock all the features and connect with the comm
 
 - Follow and be Followed: Build connections by following other users and gaining followers. Engage with the community through likes, comments, and shared experiences.
 
-## 💻 Tech Stack
+## Tech Stack
 
 LinkHub is built on a robust tech stack, including:
 
-- Frontend: ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-- Backend: ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) | ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-- Database: ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) -![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+- ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
-## 👍 Meet the LinkHub Team
+## Meet the LinkHub Team
 
 Our dedicated team members are passionate about creating a vibrant and inclusive space for travel enthusiasts. Get to know the faces behind LinkHub:
 
@@ -69,7 +68,7 @@ Our dedicated team members are passionate about creating a vibrant and inclusive
 - [Fatima](https://github.com/fsky99)
 - [Hamad](https://github.com/Hamad-Alfandi)
 
-## ✨ Acknowledgments
+## Acknowledgments
 
 - [cloudinary](https://cloudinary.com/)
 - [Material UI](https://mui.com/)
