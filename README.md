@@ -12,6 +12,9 @@ LinkHub consists of two main repositories:
 - [Frontend](https://github.com/fsky99/LinkHub_Frontend/tree/main)
 - [Backend](https://github.com/fsky99/LinkHub_Backend/tree/main)
 
+## Live Version
+Click the following link to be redirected to the live version of the code. [LinkHub](https://link-hub.surge.sh/)
+
 ## Table of Contents
 
 - [About the Project](#about-the-project)
