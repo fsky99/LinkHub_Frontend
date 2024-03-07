@@ -61,7 +61,7 @@ const Profile = ({ user }) => {
           <div className="usertopPart">
             {profile ? (
               <div className="usernameProfile userClass">
-                {profile.userName}
+                <b> {profile.userName}</b>
               </div>
             ) : null}
             <Link className="editLink" to="/edit">
@@ -73,10 +73,10 @@ const Profile = ({ user }) => {
             <div className="following">
               {profile.following ? (
                 <p onClick={handleOpen}>
-                  following: {profile.following.length}
+                  <b>Following</b> {profile.following.length}
                 </p>
               ) : (
-                <p>following: 0</p>
+                <p>Following 0</p>
               )}
             </div>
 
@@ -88,12 +88,15 @@ const Profile = ({ user }) => {
             >
               <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                  Following
+                  <b>Following</b>
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                   {profile.following
                     ? profile.following.map((followU) => (
-                        <p key={followU._id}>{followU.userName}</p>
+                        <div key={followU._id}>
+                          {followU.userName}
+                          <hr />
+                        </div>
                       ))
                     : null}
                 </Typography>
@@ -103,10 +106,10 @@ const Profile = ({ user }) => {
             <div className="followers">
               {profile.followers ? (
                 <p onClick={handleOpenShow}>
-                  followers: {profile.followers.length}
+                  <b>Followers</b> {profile.followers.length}
                 </p>
               ) : (
-                <p>followers: 0</p>
+                <p>Followers 0</p>
               )}
             </div>
 
@@ -118,12 +121,15 @@ const Profile = ({ user }) => {
             >
               <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                  Followers
+                  <b>Followers</b>
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                   {profile.followers
                     ? profile.followers.map((followU) => (
-                        <p>{followU.userName}</p>
+                        <div key={followU._id}>
+                          {followU.userName}
+                          <hr />
+                        </div>
                       ))
                     : null}
                 </Typography>
