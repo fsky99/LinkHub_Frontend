@@ -1,15 +1,39 @@
-import "../App.css"
-import { useNavigate, Link } from "react-router-dom"
-import { useState, useEffect } from "react"
-import axios from "axios"
-import Client from "../services/api"
-import EditNoteIcon from "@mui/icons-material/EditNote"
+import '../App.css'
+import { useNavigate, Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import Client from '../services/api'
+import EditNoteIcon from '@mui/icons-material/EditNote'
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Modal from '@mui/material/Modal'
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: '#d4d4d4',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4
+}
 
 const Profile = ({ user }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL
   let navigate = useNavigate()
   const [profile, setProfile] = useState({})
   const [deleted, setDeleted] = useState(false)
+  const [open, setOpen] = React.useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
+
+  const [openModal, setOpenModal] = React.useState(false)
+
+  const handleOpenShow = () => setOpenModal(true)
+  const handleCloseModal = () => setOpenModal(false)
 
   useEffect(() => {
     findLoggedInUser()
@@ -24,6 +48,10 @@ const Profile = ({ user }) => {
   const deletePost = async (postId) => {
     const res = await Client.delete(`${BASE_URL}/post/${postId}`)
     setDeleted(true)
+  }
+
+  const showFollow = () => {
+    alert('show')
   }
 
   return user ? (
@@ -44,19 +72,63 @@ const Profile = ({ user }) => {
           <div className="following-followers">
             <div className="following">
               {profile.following ? (
-                <p>following: {profile.following.length}</p>
+                <p onClick={handleOpen}>
+                  following: {profile.following.length}
+                </p>
               ) : (
                 <p>following: 0</p>
               )}
             </div>
 
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Following
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  {profile.following
+                    ? profile.following.map((followU) => (
+                        <p key={followU._id}>{followU.userName}</p>
+                      ))
+                    : null}
+                </Typography>
+              </Box>
+            </Modal>
+
             <div className="followers">
               {profile.followers ? (
-                <p>followers: {profile.followers.length}</p>
+                <p onClick={handleOpenShow}>
+                  followers: {profile.followers.length}
+                </p>
               ) : (
                 <p>followers: 0</p>
               )}
             </div>
+
+            <Modal
+              open={openModal}
+              onClose={handleCloseModal}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Followers
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  {profile.followers
+                    ? profile.followers.map((followU) => (
+                        <p>{followU.userName}</p>
+                      ))
+                    : null}
+                </Typography>
+              </Box>
+            </Modal>
           </div>
         </div>
 
@@ -81,7 +153,7 @@ const Profile = ({ user }) => {
                     <div className="card-footerProfile">
                       {userpost.like && (
                         <div className="likesProfile">
-                          likes: {userpost.like.length}{" "}
+                          likes: {userpost.like.length}{' '}
                         </div>
                       )}
                       <button
@@ -101,7 +173,7 @@ const Profile = ({ user }) => {
   ) : (
     <div className="protected">
       <h3>Oops! You must be signed in to do that!</h3>
-      <button onClick={() => navigate("/signin")}>Sign In</button>
+      <button onClick={() => navigate('/signin')}>Sign In</button>
     </div>
   )
 }

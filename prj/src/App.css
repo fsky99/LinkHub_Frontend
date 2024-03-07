@@ -397,6 +397,22 @@ img {
   font-family: 'Roboto', sans-serif;
 }
 
+.homePageNotLoggedIn {
+  display: flex;
+  flex-direction: row;
+}
+
+.textForHomePage {
+  display: flex;
+  flex-direction: column;
+}
+
+.imgHomePage {
+  height: 35%;
+  width: 32%;
+  margin-right: 50px;
+}
+
 /* Heading Two */
 .HomePageNotLoggedinUserhTwo {
   font-size: 35px;
@@ -417,7 +433,7 @@ img {
 .HomePageNotLoggedinUserPar {
   font-family: 'Georgia', serif;
   font-size: 25px;
-  color: #6e6254;
+  color: #f1dcc5;
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -1069,4 +1085,39 @@ menu {
 
 h1 {
   color: #f1dcc5;
+}
+
+/* button for getting started */
+
+.gettingStarted {
+  cursor: pointer;
+  font-weight: 700;
+  font-family: Helvetica, 'sans-serif';
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: #baa48d;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  width: 15%;
+}
+
+.gettingStarted:hover {
+  background: #baa48d;
+}
+
+.gettingStarted > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gettingStarted:hover svg {
+  transform: translateX(5px);
+}
+
+.gettingStarted:active {
+  transform: scale(0.95);
 }
