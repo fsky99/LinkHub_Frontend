@@ -35,10 +35,13 @@ LinkHub is a platform dedicated to sharing travel experiences through captivatin
 Welcome to LinkHub! We're excited to have you join our community of passionate travelers. Follow these simple steps to make the most of your LinkHub experience:
 
 1. Sign Up:
+
 ![Image](https://i.ibb.co/W02fy8Z/image-7.png)
+
 Create your LinkHub account to unlock all the features and connect with the community, and you're ready to embark on a journey of exploration.
 
 3. Explore the Platform:
+ 
 ![Image](https://i.ibb.co/CBVVTcB/image-6.png)
 
 - Discover: Dive into the platform and explore a myriad of travel experiences from users around the world. From picturesque landscapes to bustling cityscapes, there's always something new to discover.
